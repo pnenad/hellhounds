@@ -1,5 +1,6 @@
 
 public class JsonMessage{
+
 	private int type;
 	private String message;
 	private Player player;
@@ -19,6 +20,11 @@ public class JsonMessage{
 		this.message = message;
 	}
 
+	public void setPlayer(Player player)
+	{
+		this.player = player;
+	}
+
 	public int getType()
 	{
 		return this.type;
@@ -29,7 +35,12 @@ public class JsonMessage{
 		return this.message;
 	}
 
-	private static class Player{
+	public Player getPlayer()
+	{
+		return this.player;
+	}
+
+	protected class Player{
 		private String username;
 		private int score;
 		private int played_games;
