@@ -1,0 +1,19 @@
+*-------------------------------*
+
+From Client To Server
+
+Type:
+	0 - Disconnect
+	1 - Connect
+	2 - Register
+	3 - Add Friend
+	4 - Join Game
+	5 - Game Information
+	9 - Delete Player
+
+*-------------------------------*
+
+From Server To Client
+
+Type:
+	

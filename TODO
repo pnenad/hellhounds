@@ -1,0 +1,55 @@
+	     ROUGH OVERVIEW
+*---------------------------------------*
+|	MySQL				|
+|	JDBC				|
+|	SERVER  <--TCP-->  CLIENT	|
+|			   GAME		|
+|			   GUI		|
+*---------------------------------------*
+
+		NETWORK
+
+SQL:
+	(1) More testing on the database.
+	(?) Database complete?
+	(?) Add new table?
+
+Server:
+	(1) Create TCP connection between server and client.
+	(2) Set up connection to database
+	(3) Find the right queries for the game
+		- Create new player.
+		- Update player.
+		- Delete player.
+		- Get player-info.
+		- Update players friendlist.
+		- Remove friend from players friendlist.
+		- Get players friendlist.
+		- Update score.
+		- Update games played.
+	(4) Create a new thread for each client connected to the server.
+	(?) 
+
+Client:
+	(1) Create TCP connection between server and client.
+	(2) Retrive player-information from the server? All information?
+	(3) 
+
+
+
+		GAME - Android
+
+Server:
+	(1) Parse information from client. XML or JSON?
+	(2) Gameobject com computing game results?
+	(3) Queue for players that will play random games.
+	(4) 
+
+Client:
+	(?)
+
+Game:
+	(?)
+
+GUI:
+	(?)
