@@ -1,8 +1,7 @@
 /* 
-	Create BattleFree database (MySQL)
-	
-	Version: 0.02
-*/
+ * 	Create BattleFree database (MySQL)
+ * 	Version: 0.02
+ */
 
 /* Database name */
 CREATE SCHEMA battlefree;
@@ -23,9 +22,9 @@ CONSTRAINT playerID_pk PRIMARY KEY(playerID)
 
 
 /* Creates friend table 
-	Both player must add the other to their friendlist. 
-	If not only one will be friend with the other.
-*/
+ * Both player must add the other to their friendlist. 
+ * If not only one will be friend with the other.
+ */
 CREATE TABLE friend(
 playerID 	INTEGER NOT NULL,
 friend_playerID INTEGER NOT NULL,
@@ -52,6 +51,5 @@ FROM player JOIN friend
 ON player.playerID=friend.playerID 
 AND friend.accepted = 1;
 
-/* 	TODO: (1) ....
-*/
+/* 	TODO: (1) ....	*/
 
