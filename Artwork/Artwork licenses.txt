@@ -1,0 +1,120 @@
+Source file: catapult.zip - http://opengameart.org/content/catapult
+Author: yd - http://opengameart.org/users/yd
+License(s): CC0
+
+Source file: watch_tower.svg - http://opengameart.org/content/watch-tower-platform
+Author: nicubunu - http://opengameart.org/users/nicubunu
+License(s): CC0
+
+Source file: windmill.svg - http://opengameart.org/content/windmill
+Author: nicubunu - http://opengameart.org/users/nicubunu
+License(s): CC0
+
+Source file: caravan.svg - http://opengameart.org/content/caravan
+Author: nicubunu - http://opengameart.org/users/nicubunu
+License(s): CC0
+
+Source file: statue.svg - http://opengameart.org/content/statue
+Author: nicubunu - http://opengameart.org/users/nicubunu
+License(s): CC0
+
+Source file: city.svg - http://opengameart.org/content/fortified-city
+Author: nicubunu - http://opengameart.org/users/nicubunu
+License(s): CC0
+
+Source file: WestnothSprites_1.zip - http://opengameart.org/content/blarumyrrans-publicdomain-wesnoth-sprites
+Author: Blarumyrran - http://opengameart.org/users/blarumyrran
+License(s): CC0
+
+Source file: rpgportraits.png - http://opengameart.org/content/rpg-portraits
+Author: Buch - http://blog-buch.rhcloud.com
+License(s): CC0
+
+Source file: FREEUIASSETPACK_BY@CAMTATZ.zip - http://opengameart.org/content/free-ui-asset-pack-1
+Author: CTatz - http://opengameart.org/users/ctatz
+License(s): CC0
+
+Source file: FreeArt_TreasureChest.zip - http://opengameart.org/content/treasure-chests
+Author: SpriteAttack - http://opengameart.org/users/spriteattack
+License(s): CC0
+
+Source file: skeleton-ghost.zip - http://opengameart.org/content/skeleton-and-ghost-spritesheets-ars-notoria
+Author: Balmer - http://opengameart.org/users/balmer
+License(s): CC0
+
+Source file: UIpack_RPG.zip - http://opengameart.org/content/ui-pack-rpg-extension
+Author: Kenney - www.kenney.nl
+License(s): CC0
+
+Source file: UIpack.zip - http://opengameart.org/content/ui-pack
+Author: Kenney - www.kenney.nl
+License(s): CC0
+
+Source file: Platformer Art Complete Pack_0.zip - http://opengameart.org/content/platformer-art-complete-pack-often-updated
+Author: Kenney - www.kenney.nl
+License(s): CC0
+
+Source file: kenneyMedals.zip - http://opengameart.org/content/medals-2
+Author: Kenney - www.kenney.nl
+License(s): CC0
+
+Source file: npc-oldman1.png - http://opengameart.org/content/old-man-32x32-overflow-sprite-from-lightstone
+Author: TapSkill - http://opengameart.org/users/tap
+License(s): CC0
+
+Source file: troll_1_0.png - http://opengameart.org/content/trolls
+Author: Blarumyrran - http://opengameart.org/users/blarumyrran
+License(s): CC0
+
+Source file: domonhunter.png - http://opengameart.org/content/d3-f-dh-static-64-x-64
+Author: LordNeo - http://opengameart.org/users/lordneo
+License(s): CC0
+
+Source file: archer_0.png - http://opengameart.org/content/archer-static-64x64
+Author: LordNeo - http://opengameart.org/users/lordneo
+License(s): CC0
+
+Source file: orc_1.png - http://opengameart.org/content/orc-static-64x64
+Author: LordNeo - http://opengameart.org/users/lordneo
+License(s): CC0
+
+Source file: swordsman_t_0.png - http://opengameart.org/content/swordsman-static-64x64
+Author: LordNeo - http://opengameart.org/users/lordneo
+License(s): CC0
+
+Source file: ranger_t.png - http://opengameart.org/content/ranger-static-64x64
+Author: LordNeo - http://opengameart.org/users/lordneo
+License(s): CC0
+
+Source file: barbarianT.png - http://opengameart.org/content/barbarian-static-64x64
+Author: LordNeo - http://opengameart.org/users/lordneo
+License(s): CC0
+
+Source file: magic.png - http://opengameart.org/content/wizard-0
+Author: Blarumyrran - http://opengameart.org/users/blarumyrran
+License(s): CC0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Licenses:
+cc0 - CC0 1.0 Universal (CC0 1.0), Public Domain Dedication
+http://creativecommons.org/publicdomain/zero/1.0/
+
