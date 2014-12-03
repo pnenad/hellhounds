@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package src.com.hellhound.battlefree.util;
+
 import com.google.gson.annotations.SerializedName;
 
 public class JsonMessage{
