@@ -22,11 +22,15 @@ public class JsonMessage{
 
 	private int type;
 	private String message;
-	private Player player;
+	private JsonPlayer player;
+	private JsonGame game;
+
 
 	public JsonMessage()
 	{ 
-		player = new Player();
+		player = new JsonPlayer();
+		game = new JsonGame();
+
 	}
 
 	// Type
@@ -40,41 +44,4 @@ public class JsonMessage{
 	// Player
 	public void setPlayer(Player player){ this.player = player; }
 	public Player getPlayer(){ return this.player; }
-
-	protected class Player
-	{
-		private String username;
-		private String password;
-		private String email;
-		private int score;
-		@SerializedName("played_games")
-		private int playedGames;
-
-		public Player(){}
-		
-		// Username
-		public void setUsername(String username){ this.username = username; }
-		public String getUsername(){ return this.username; }
-		
-		// Password
-		public void setPassword(String password){ this.password = password; }
-		public String getPassword(){ return this.password; }
-
-		// Email
-		public void setEmail(String email){ this.email = email; }
-		public String getEmail(){ return this.email; }
-
-		// Score
-		public void setScore(int score){ this.score = score; }
-		public int getScore() {	return this.score; }
-
-		// Played Games
-		public void setPlayedGames(int playedGames){ this.playedGames = playedGames; }
-		public int getPlayedGames(){ return this.playedGames; }
-	}
-
-	protected class Game
-	{
-		//TODO: What should this class contain?
-	}
 }
