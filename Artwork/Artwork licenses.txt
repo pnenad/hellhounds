@@ -94,7 +94,13 @@ Source file: magic.png - http://opengameart.org/content/wizard-0
 Author: Blarumyrran - http://opengameart.org/users/blarumyrran
 License(s): CC0
 
+Source file: RockTilesBackGround.png - http://opengameart.org/content/rock-tileset
+Author: sithoius - http://opengameart.org/users/sithoius
+License(s): CC0
 
+Source file: wood tex2_0.png - http://opengameart.org/content/2-tilling-wood-panel-textures
+Author: Scribe - http://opengameart.org/users/scribe
+License(s): CC0
 
 
 
