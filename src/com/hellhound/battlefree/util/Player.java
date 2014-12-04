@@ -1,12 +1,23 @@
+package com.hellhound.battlefree.util;
+
 public class Player {
-        private String username
+        private String username;
 	private String password;
 	private String email;
 	private int score;
-	@SerializedName("played_games")
+	//@SerializedName("played_games")
 	private int playedGames;
-	
-	public Player(){}
+
+	public Player(){
+	}	
+	public Player(String username){
+		this.username  = username;
+	}
+	public Player(String username, String pasword, String email){
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
 							                 
 	// Username
 	public void setUsername(String username){ this.username = username; }

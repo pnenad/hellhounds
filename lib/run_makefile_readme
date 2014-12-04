@@ -1,0 +1,7 @@
+Readme for run and makefile!
+
+Take run and makefile from this folder and put it in the project root folder (one folder ahead).
+
+To use makefile open the root folder in terminal and type make.
+
+When the project compiles type ./run to run server in the background and client in front.

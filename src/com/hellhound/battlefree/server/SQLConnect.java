@@ -1,1 +1,1 @@
-package src.com.hellhound.battlefree.server;
+package com.hellhound.battlefree.server;

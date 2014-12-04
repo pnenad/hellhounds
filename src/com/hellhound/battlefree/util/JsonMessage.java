@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package src.com.hellhound.battlefree.util;
+package com.hellhound.battlefree.util;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -22,14 +22,14 @@ public class JsonMessage{
 
 	private int type;
 	private String message;
-	private JsonPlayer player;
-	private JsonGame game;
+	private Player player;
+	private Game game;
 
 
 	public JsonMessage()
 	{ 
-		player = new JsonPlayer();
-		game = new JsonGame();
+		player = new Player();
+		game = new Game();
 
 	}
 

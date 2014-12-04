@@ -1,7 +1,7 @@
-package src.com.hellhound.battlefree.server;
+package com.hellhound.battlefree.server;
 
 import java.net.*;
-import src.com.hellhound.battlefree.util.*;
+import com.hellhound.battlefree.util.*;
 
 public class Client{
 

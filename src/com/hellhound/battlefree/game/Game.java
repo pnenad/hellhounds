@@ -1,1 +1,1 @@
-package src.com.hellhound.battlefree.game;
+package com.hellhound.battlefree.game;

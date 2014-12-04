@@ -1,8 +1,8 @@
 package com.hellhound.battlefree.util;
-public class JsonGame{
+public class Game{
 	//variabler
 	
-	public JsonGame(){
+	public Game(){
 		//setters and getters
 		}
 }
