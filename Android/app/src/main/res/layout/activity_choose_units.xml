@@ -1,0 +1,213 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.uia.battlefree.ChooseUnits"
+    android:background="@drawable/scroll">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/chosen_units"
+        android:id="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:background="#ff0015ff"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:contentDescription="imageSlider"
+            android:background="@drawable/woodtexture2"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/choose_units"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:fillViewport="false"
+        android:layout_marginBottom="5dp"
+        android:visibility="visible"
+        android:layout_marginRight="5dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/choose_unit_linear_layout">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_1"
+                android:background="@drawable/orc"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_5"
+                android:background="@drawable/thief"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_2"
+                android:focusable="false"
+                android:background="@drawable/golem"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_3"
+                android:background="@drawable/defender"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_4"
+                android:background="@drawable/barbarian"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_6"
+                android:background="@drawable/archer"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_7"
+                android:background="@drawable/catapult"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_8"
+                android:background="@drawable/dwarf"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_9"
+                android:background="@drawable/mage"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_10"
+                android:background="@drawable/mushrooms"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_11"
+                android:background="@drawable/skeletons"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_12"
+                android:background="@drawable/supplycart"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_13"
+                android:background="@drawable/vampire"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unit_button_14"
+                android:background="@drawable/footsoldiers"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="false"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linear_layout_1"
+        android:layout_marginTop="30dp"
+        android:visibility="invisible">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chosen_unit_1"
+            android:background="@drawable/orcbigger"
+            android:visibility="invisible" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chosen_unit_2"
+            android:background="@drawable/orcbigger"
+            android:visibility="invisible" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chosen_unit_3"
+            android:background="@drawable/orcbigger"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_above="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
