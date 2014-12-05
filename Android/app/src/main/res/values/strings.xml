@@ -7,5 +7,8 @@
     <string name="title_activity_choose_units">ChooseUnits</string>
     <string name="hello_world">Hello world!</string>
     <string name="chosen_units">Chosen Units</string>
+    <string name="title_activity_unit_description">UnitDescription</string>
+    <string name="title_activity_main_activity2">MainActivity2</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
