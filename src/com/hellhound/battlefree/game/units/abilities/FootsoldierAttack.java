@@ -1,5 +1,8 @@
 package com.hellhound.battlefree.game.units.abilities;
 
+// The most basic attack, for the most basic
+// unit in the game.
+
 public class FootsoldierAttack extends Ability{
 
     public FootsoldierAttack()
