@@ -43,11 +43,11 @@ public class Player{
     {
         return "Username: " + username +
                "\nPlayer Resource: " +
-               "\n\t Gold: " + gold +
-               "\n\t Steel: " + steel +
-               "\n\t Crystal: " + crystal +
-               "\nUnit1: " + unit1.toString() +
-               "\nUnit2: " + unit2.toString() +
-               "\nUnit3: " + unit3.toString();
+               "\n\t\tGold: " + gold +
+               "\n\t\tSteel: " + steel +
+               "\n\t\tCrystal: " + crystal +
+               "\n\nUnit1 --> " + unit1.toString() +
+               "\n\nUnit2 --> " + unit2.toString() +
+               "\n\nUnit3 --> " + unit3.toString();
     }
 }

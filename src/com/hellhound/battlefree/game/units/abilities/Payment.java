@@ -38,10 +38,10 @@ public class Payment{
     @Override
     public String toString()
     {
-        return "Payment: " +
-               "\n\tGold: " + getGold() +
-               "\n\tSteel: " + getSteel() +
-               "\n\tCrystal: " + getCrystal() +
-               "\n\tAny: " + getAny();
+        return "\t  AbilityCost: " +
+               "\n\t\t      Gold: " + getGold() +
+               "\n\t\t      Steel: " + getSteel() +
+               "\n\t\t      Crystal: " + getCrystal() +
+               "\n\t\t      Any: " + getAny();
     }
 }

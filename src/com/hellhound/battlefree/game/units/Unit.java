@@ -32,13 +32,13 @@ public class Unit{
     @Override
     public String toString()
     {
-        return "Name: " + getName() +
-               "\nHealth: " + getHealth() +
-               "\nAbility: " + ability.getName() +
-               "\nAbilityType: " + ability.getAbilityType() +
-               "\nAbilityValue: " + ability.getValue() +
-               "\n" + ability.getCost().toString() +
-               "\nIs Alive: " + isAlive();
+        return getName() +
+               "\n\t  Alive: " + isAlive() +
+               "\n\t  Health: " + getHealth() +
+               "\n\t  Ability: " + ability.getName() +
+               "\n\t  AbilityType: " + ability.getAbilityType() +
+               "\n\t  AbilityValue: " + ability.getValue() +
+               "\n" + ability.getCost().toString();
     }
  
 }
