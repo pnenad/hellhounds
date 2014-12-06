@@ -16,10 +16,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        playButtonSetup();
+        playClicked();
     }
 
-    private void playButtonSetup(){
+    private void playClicked(){
 
         Button playButton = (Button) findViewById(R.id.play_button);
         playButton.setOnClickListener(new View.OnClickListener() {

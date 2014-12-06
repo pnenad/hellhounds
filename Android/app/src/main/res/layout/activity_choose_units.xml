@@ -7,19 +7,6 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentStart="false"
-        android:layout_above="@+id/woodenBoard"
-        android:id="@+id/fragment_container"
-        android:longClickable="true"
-        android:baselineAligned="false"
-        android:visibility="gone">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:layout_alignParentBottom="true"
@@ -44,8 +31,7 @@
         android:fillViewport="false"
         android:layout_marginBottom="5dp"
         android:visibility="visible"
-        android:layout_marginRight="5dp"
-        android:transitionGroup="false">
+        android:layout_marginRight="5dp">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -198,5 +184,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/chosen_unit_3" />
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/fragment_container"
+        android:layout_above="@+id/woodenBoard"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_centerHorizontal="true"></FrameLayout>
 
 </RelativeLayout>

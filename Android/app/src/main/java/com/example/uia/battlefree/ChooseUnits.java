@@ -1,19 +1,17 @@
 package com.example.uia.battlefree;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
 
@@ -23,14 +21,13 @@ public class ChooseUnits extends FragmentActivity {
     Button CU1;
     Button CU2;
     Button CU3;
+    boolean isOpen = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_units);
-        FragmentManager fm = getSupportFragmentManager();
-         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
+        setContentView(R.layout.activity_choose_units);
 
         final Button orc = (Button) findViewById(R.id.chooseOrc);
         final Button skeleton = (Button) findViewById(R.id.chooseSkeleton);
@@ -49,15 +46,15 @@ public class ChooseUnits extends FragmentActivity {
         orc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                startActivity(new Intent(ChooseUnits.this, UnitDescriptionFragment.class));
-
-                if(isPicked(orc)){
-                    System.out.println("already picked");
+                UnitDescriptionFragment unitDesc = (UnitDescriptionFragment) getFragmentManager().findFragmentByTag("tag");
+                if(unitDesc == null){
+                    unitDesc = new UnitDescriptionFragment();
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).add(R.id.fragment_container,unitDesc,"tag").commit();
+                    unitDesc.setCurrOpen(orc);
                 }else{
-                    chooseUnit(orc);
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).remove(unitDesc).commit();
                 }
-        }
+            }
         });
         skeleton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +81,9 @@ public class ChooseUnits extends FragmentActivity {
             }
         });
 
+
         CU1.setOnClickListener(new View.OnClickListener(){
+           @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
            @Override
            public void onClick(View view){
                if(CU1.getVisibility() == View.VISIBLE){
@@ -94,6 +93,7 @@ public class ChooseUnits extends FragmentActivity {
            }
         });
         CU2.setOnClickListener(new View.OnClickListener(){
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View view){
                 if(CU2.getVisibility() == View.VISIBLE){
@@ -103,6 +103,7 @@ public class ChooseUnits extends FragmentActivity {
             }
         });
         CU3.setOnClickListener(new View.OnClickListener(){
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View view){
                 if(CU3.getVisibility() == View.VISIBLE){
@@ -113,38 +114,49 @@ public class ChooseUnits extends FragmentActivity {
         });
     }
 
+    public void addUnit(Button picked){
+        if(!checkIfPicked(picked)){
+            chooseUnit(picked);
+        }
+        getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).remove(getFragmentManager().findFragmentByTag("tag")).commit();
+
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void chooseUnit(Button chosenUnit) {
         Drawable chosenUnitBackground = chosenUnit.getBackground();
-        ArrayList<Button> bArray = getChosenList();
-
+        ArrayList<Button> pickedList = getPickedList();
         int i = 0;
-        for(Button m : bArray){
+        for(Button m : pickedList){
             if(m.getVisibility() == View.INVISIBLE && i == 0){
                 m.setBackground(chosenUnitBackground);
                 m.setVisibility(View.VISIBLE);
                 i++;
             }
         }
-        bArray.clear();
     }
 
-    public ArrayList<Button> getChosenList(){
-        ArrayList<Button> chosenList = new ArrayList<Button>();
-        chosenList.add(CU1);
-        chosenList.add(CU2);
-        chosenList.add(CU3);
-        return chosenList;
+    public ArrayList<Button> getPickedList(){
+        ArrayList<Button> pickedList = new ArrayList<Button>();
+        pickedList.add(CU1);
+        pickedList.add(CU2);
+        pickedList.add(CU3);
+        return pickedList;
     }
 
-    public boolean isPicked(Button pushedUnit){
+    public boolean checkIfPicked(Button pushedUnit){
         boolean picked = false;
-        for(Button chosen : getChosenList()){
+        for(Button chosen : getPickedList()){
             if(chosen.getBackground() == pushedUnit.getBackground()){
                 picked=true;
             }
         }
         return picked;
     }
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
