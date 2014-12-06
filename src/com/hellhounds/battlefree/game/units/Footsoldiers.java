@@ -6,7 +6,7 @@ public class Footsoldiers extends Unit{
 
     public Footsoldiers()
     {
-        super("Footsoldiers", new FootsoldierAttack());
+        super("Footsoldiers", new FootsoldierAttack(), 100);
     }
     
 }

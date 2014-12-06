@@ -8,7 +8,8 @@ public class FootsoldierAttack extends Ability{
     public FootsoldierAttack()
     {
         super("FootsoldierAttack", new Payment(0, 0, 0, 1), 
-              AbilityType.DAMAGE, 15);
+              new DamageEffect(10),
+              new DamageEffect(0));
     }
 
 }

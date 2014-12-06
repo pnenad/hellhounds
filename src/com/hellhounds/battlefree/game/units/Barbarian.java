@@ -5,7 +5,7 @@ public class Barbarian extends Unit{
 
 	public Barbarian()
 	{
-		super("Barbarian", new BarbarianAttack());
+		super("Barbarian", new BarbarianAttack(), 100);
 	}
 	
 }

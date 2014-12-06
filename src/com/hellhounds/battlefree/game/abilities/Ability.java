@@ -5,33 +5,18 @@ public class Ability{
     private String name;
     private Payment cost;
     private boolean activated;
-    private AbilityType abilityType;
-    private int value;
+    private Effect primary;
+    private Effect secondary;
 
-    public Ability(String name, Payment cost, AbilityType at, int value)
+    public Ability(String name, Payment cost, Effect primary, Effect secondary)
     {
         this.name = name;
         this.cost = cost;
         this.activated = false;
-        this.abilityType = at;
-        this.value = value;
+        this.primary = primary;
+        this.secondary = secondary;
     }
-    
-    public String getName(){ return this.name; }
-    public void setName(String name){ this.name = name; }
-
-    public Payment getCost(){ return this.cost; }
-    public void setCost(Payment cost){ this.cost = cost; }
-
-    public boolean isActivated(){ return this.activated; }
-    public void setActivated(boolean activated){ this.activated = activated; }
-
-    public AbilityType getAbilityType(){ return this.abilityType; }
-    public void setAbilityType(AbilityType at){ this.abilityType = at; }
-
-    public int getValue(){ return this.value; }
-    public void setValue(int value){ this.value = value; }
-    
+   
     public boolean checkSpecificPayment(Payment po)
     {
         return this.cost.getGold() == po.getGold() &&
@@ -48,4 +33,19 @@ public class Ability{
         
         return sumCost == sumPay;
     }
+
+    public Effect getPrimary(){ return primary; }
+    public void setPrimary(Effect primary){ this.primary = primary; }
+
+    public Effect getSecondary(){ return secondary; }
+    public void setSecondary(Effect secondary){ this.secondary = secondary; }
+
+     public String getName(){ return this.name; }
+    public void setName(String name){ this.name = name; }
+
+    public Payment getCost(){ return this.cost; }
+    public void setCost(Payment cost){ this.cost = cost; }
+
+    public boolean isActivated(){ return this.activated; }
+    public void setActivated(boolean activated){ this.activated = activated; }
 }

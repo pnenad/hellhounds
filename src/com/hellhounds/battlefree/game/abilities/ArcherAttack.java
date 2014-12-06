@@ -6,8 +6,9 @@ public class ArcherAttack extends Ability{
 
 	public ArcherAttack()
 	{
-		super("ArcherAttack", new Payment(1, 1, 0, 0),
-			AbilityType.DAMAGE, 40);
+		super("ArcherAttack", new Payment(1, 1, 0, 0), 
+              new DamageEffect(20),
+              new DamageEffect(20));
 	}
 	
 }

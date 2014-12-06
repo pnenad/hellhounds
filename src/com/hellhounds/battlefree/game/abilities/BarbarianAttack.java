@@ -6,7 +6,8 @@ public class BarbarianAttack extends Ability{
 	public BarbarianAttack()
 	{
 		super("BarbarianAttack", new Payment (2, 0, 0, 0), 
-			AbilityType.DAMAGE, 20);
+              new DamageEffect(15),
+              new DamageEffect(15));
 	}
 	
 }

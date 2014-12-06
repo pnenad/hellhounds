@@ -8,15 +8,33 @@ public class Unit{
     private int health;
     private Ability ability;
     private boolean alive;
+    private int armor;
 
-    public Unit(String name, Ability ability)
+    public Unit(String name, Ability ability, int health)
     {
         this.name = name;
         this.ability = ability;
-        alive = true;
-        health = 100;
+        this.alive = true;
+        this.health = health;
+        this.armor = 0;
     }
     
+    @Override
+    public String toString()
+    {
+        return getName() +
+               "\n\t  Alive: " + isAlive() +
+               "\n\t  Health: " + getHealth() +
+               "\n\t  Armor: " + getArmor() +
+               "\n\t  Ability: " + ability.getName() +
+               "\n\t  PrimaryEffect: " + ability.getPrimary().toString() +
+               "\n\t  SecondaryEffect: " + ability.getSecondary().toString() +
+               "\n" + ability.getCost().toString();
+    }
+ 
+    public int getArmor(){ return armor; }
+    public void setArmor(int armor){ this.armor = armor; }
+
     public String getName(){ return this.name; }
     public void setName(String name){ this.name = name; }
 
@@ -28,17 +46,4 @@ public class Unit{
 
     public boolean isAlive(){ return alive; }
     public void setAlive(boolean alive){ this.alive = alive; }
-
-    @Override
-    public String toString()
-    {
-        return getName() +
-               "\n\t  Alive: " + isAlive() +
-               "\n\t  Health: " + getHealth() +
-               "\n\t  Ability: " + ability.getName() +
-               "\n\t  AbilityType: " + ability.getAbilityType() +
-               "\n\t  AbilityValue: " + ability.getValue() +
-               "\n" + ability.getCost().toString();
-    }
- 
 }
