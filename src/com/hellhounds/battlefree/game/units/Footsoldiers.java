@@ -1,6 +1,6 @@
-package com.hellhound.battlefree.game.units;
+package com.hellhounds.battlefree.game.units;
 
-import com.hellhound.battlefree.game.units.abilities.FootsoldierAttack;
+import com.hellhounds.battlefree.game.abilities.FootsoldierAttack;
 
 public class Footsoldiers extends Unit{
 

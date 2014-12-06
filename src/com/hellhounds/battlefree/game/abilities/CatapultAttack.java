@@ -1,4 +1,4 @@
-package com.hellhounds.battlefree.game.units.abilities;
+package com.hellhoundss.battlefree.game.units.abilities;
 
 // The catapult has poor aim but hits hard.
 // As such it will hit a random (living) enemy unit.

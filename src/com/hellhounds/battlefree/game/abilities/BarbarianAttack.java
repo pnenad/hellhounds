@@ -1,4 +1,4 @@
-package com.hellhound.battlefree.game.units.abilities;
+package com.hellhounds.battlefree.game.abilities;
 // This attack should hit all enemies if possible.
 // (Whirlwind)
 public class BarbarianAttack extends Ability{

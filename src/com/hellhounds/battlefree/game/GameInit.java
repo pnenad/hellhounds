@@ -1,6 +1,6 @@
-package com.hellhound.battlefree.game;
+package com.hellhounds.battlefree.game;
 
-import com.hellhound.battlefree.game.units.Footsoldiers;
+import com.hellhounds.battlefree.game.units.Footsoldiers;
 
 public class GameInit{
 

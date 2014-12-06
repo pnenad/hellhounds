@@ -1,4 +1,4 @@
-package com.hellhound.battlefree.game;
+package com.hellhounds.battlefree.game;
 
 import java.util.HashMap;
 

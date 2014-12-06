@@ -1,4 +1,4 @@
-package com.hellhounds.battlefree.game.units.abilities;
+package com.hellhoundss.battlefree.game.units.abilities;
 
 // This ability should deal 10 damage to one target
 // enemy, and grant each teammate 10 temporary

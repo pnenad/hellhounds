@@ -1,4 +1,4 @@
-package com.hellhound.battlefree.game;
+package com.hellhounds.battlefree.game;
 
 public class Game{
 

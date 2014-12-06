@@ -1,4 +1,4 @@
-package com.hellhound.battlefree.game.units.abilities;
+package com.hellhounds.battlefree.game.abilities;
 
 // The most basic attack, for the most basic
 // unit in the game.

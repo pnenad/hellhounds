@@ -1,4 +1,4 @@
-package com.hellhound.battlefree.game.units.abilities;
+package com.hellhounds.battlefree.game.abilities;
 // To make this attack more interesting, it should hit 
 // the same target twice for 20 hp. This would make
 // it weaker against armored foes.

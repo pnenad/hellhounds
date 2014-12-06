@@ -1,4 +1,4 @@
-package com.hellhound.battlefree.game.units.abilities;
+package com.hellhounds.battlefree.game.abilities;
 
 public class Ability{
 

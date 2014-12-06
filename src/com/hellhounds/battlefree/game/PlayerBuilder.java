@@ -1,6 +1,6 @@
-package com.hellhound.battlefree.game;
+package com.hellhounds.battlefree.game;
 
-import com.hellhound.battlefree.game.units.Unit;
+import com.hellhounds.battlefree.game.units.Unit;
 
 public class PlayerBuilder{
 
