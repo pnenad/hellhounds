@@ -1,11 +1,12 @@
 package com.hellhounds.battlefree.game.units;
-import com.hellhounds.battlefree.game.abilities.BarbarianAttack;
+
+import com.hellhounds.battlefree.game.abilities.BarbarianAbility;
 
 public class Barbarian extends Unit{
 
 	public Barbarian()
 	{
-		super("Barbarian", new BarbarianAttack(), 100);
+		super("Barbarian", new BarbarianAbility(), 100);
 	}
 	
 }

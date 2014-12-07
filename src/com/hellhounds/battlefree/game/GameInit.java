@@ -7,12 +7,12 @@ public class GameInit{
     public static void main(String[] args)
     {
         PlayerBuilder pb = new PlayerBuilder("Mannebind");
-        Player p1 = pb.unit1(new Footsoldiers()).unit2(new Archer()).
+        Player p1 = pb.unit1(new Footsoldier()).unit2(new Archer()).
                     unit3(new Defender()).gold(1).steel(2).crystal(3).
                     create();
 
         pb = new PlayerBuilder("iEzpeN");
-        Player p2 = pb.unit1(new Barbarian()).unit2(new Footsoldiers()).
+        Player p2 = pb.unit1(new Barbarian()).unit2(new Footsoldier()).
                     unit3(new Catapult()).gold(3).steel(2).crystal(1).
                     create();
 

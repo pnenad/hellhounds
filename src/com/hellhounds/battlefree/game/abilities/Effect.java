@@ -2,7 +2,7 @@ package com.hellhounds.battlefree.game.abilities;
 
 import com.hellhounds.battlefree.game.units.Unit;
 
-public class Effect{
+public abstract class Effect{
 
     private int numericalValue = 0;
     private String type;
@@ -13,13 +13,7 @@ public class Effect{
         this.type = type;
     }
 
-    public void applyEffect(Unit[] targets)
-    {
-        for(Unit target : targets)
-        {
-            System.out.println("EFFECT SUPER: " + target.getName());
-        }
-    }
+    public abstract void applyEffect(Unit[] targets);
 
     @Override
     public String toString()
