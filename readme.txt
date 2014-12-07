@@ -19,6 +19,7 @@ SQL:
              --> "jdbc:mysql://localhost:3306/yourdatabase"
     db.user = 'the username for your database'
     db.passwd = 'your database user password'
+
 Run GameInit:
 
 make game
