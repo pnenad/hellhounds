@@ -1,4 +1,4 @@
-//package src.com.hellhounds.battlefree.server;
+package com.hellhounds.battlefree.server;
 //Added basic functionallity for network communication. Simple message exchange between client and server.
 import java.io.*;
 import java.net.*;

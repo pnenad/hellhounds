@@ -13,8 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package src.com.hellhounds.battlefree.util;
+package com.hellhounds.battlefree.util;
 
 import com.google.gson.annotations.SerializedName;
 
