@@ -4,7 +4,6 @@ Opensource school project
 
 We will try to make an 1vs1 Android game.
 
-
 Run Client and Server:
 
 1. make
@@ -20,3 +19,7 @@ SQL:
              --> "jdbc:mysql://localhost:3306/yourdatabase"
     db.user = 'the username for your database'
     db.passwd = 'your database user password'
+Run GameInit:
+
+make game
+java -cp bin com.hellhound.battlefree.game.GameInit
