@@ -14,21 +14,23 @@
  * limitations under the License.
  */
 package com.hellhounds.battlefree.util;
-
+import com.hellhounds.battlefree.game.*;
 import com.google.gson.annotations.SerializedName;
 
 public class JsonMessage{
 
 	private int type;
 	private String message;
-	private Player player;
-	private Game game;
+	//private Player player;
+	//private Game game;
+	private Person person;
 
 
 	public JsonMessage()
 	{ 
-		player = new Player();
-		game = new Game();
+		person = new Person();
+		//player = new Player();
+		//game = new Game();
 
 	}
 
@@ -41,6 +43,11 @@ public class JsonMessage{
 	public String getMessage(){ return this.message; }
 
 	// Player
-	public void setPlayer(Player player){ this.player = player; }
-	public Player getPlayer(){ return this.player; }
+	//public void setPlayer(Player player){ this.player = player; }
+	//public Player getPlayer(){ return this.player; }
+
+	//User
+	public void setPerson(Person person){ this.person = person; }
+	public Person getPerson(){ return this.person; }
+
 }

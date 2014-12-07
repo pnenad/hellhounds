@@ -52,7 +52,7 @@ public class JsonMessageBuilder{
 		else
 			msg.setType(0);
 
-		msg.getPlayer().setUsername(username);
+		msg.getPerson().setUsername(username);
 		
 		return gson.toJson(msg);
 	}
@@ -64,12 +64,12 @@ public class JsonMessageBuilder{
 	{
 		msg = new JsonMessage();
 		msg.setType(2);
-		msg.getPlayer().setUsername(username);
+		msg.getPerson().setUsername(username);
 		
 		if(password != null)
-			msg.getPlayer().setPassword(password);
+			msg.getPerson().setPassword(password);
 		if(email != null)
-			msg.getPlayer().setEmail(email);
+			msg.getPerson().setEmail(email);
 
 		return gson.toJson(msg);
 	}

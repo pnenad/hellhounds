@@ -1,7 +1,8 @@
 package com.hellhounds.battlefree.server;		
  import java.io.*;	  
  import java.net.*; 
- import com.hellhounds.battlefree.util.*;		
+ import com.hellhounds.battlefree.util.*;
+import com.hellhounds.battlefree.game.*; 
  		 
  /**Test class for Client Side*/		
  /**WORKING*/
@@ -52,15 +53,15 @@ public ClientTest(){
 				test.createPlayerPass(username, password, email);					
 			}		
 		}		
-		String messageIn;   		 		
-		Socket socket = new Socket("localhost", 8888);   		
-		Socket socket = new Socket("localhost", 6789);   
+		String messageIn; 		 		
+		Socket socket = new Socket("localhost", 8888);  
 		DataOutputStream outbound = new DataOutputStream(socket.getOutputStream());   		 		   
 		BufferedReader incoming = new BufferedReader(new InputStreamReader(socket.getInputStream()));   		 		
 		JsonMessageBuilder jmb = new JsonMessageBuilder();
 		//Construct a json string and send it to the server
 		outbound.writeBytes(jmb.getMessage(test.getMessage())+'\n');
 		System.out.println("*****Message sent, waiting for reply*****");
+		messageIn = incoming.readLine();
 		System.out.println("*****Message received, printing out*****");		
 		System.out.println("Server reply: " + messageIn);   		
 		socket.close();  		 		
@@ -73,7 +74,7 @@ public ClientTest(){
 			
 	/**Create player if only one parameter is given*/		
 	private void createPlayer(String username){		
-		message.setPlayer(new Player(username));		
+		message.setPerson(new Person(username));		
 		System.out.println("Casual player data: "+username);		
 	}		
 			
@@ -83,7 +84,7 @@ public ClientTest(){
 	@param String email Player's email address */		
 	private void createPlayerPass(String username, String password, String email){		
 		System.out.println("Competitive player data: "+username+" "+password+" "+email);		
-		message.setPlayer(new Player(username, password, email));		
+		message.setPerson(new Person(username, password, email));		
 	}		
 		
 }

@@ -7,8 +7,8 @@ We will try to make an 1vs1 Android game.
 Run Client and Server:
 
 1. make
-2. java -cp bin:lib/gson-2.3.jar com.hellhound.battlefree.server.Server &
-3. java -cp bin:lib/gson-2.3.jar com.hellhound.battlefree.server.ClientTest
+2. java -cp bin:lib/gson-2.3.jar com.hellhounds.battlefree.server.Server &
+3. java -cp bin:lib/gson-2.3.jar com.hellhounds.battlefree.server.ClientTest
 
 
 SQL:

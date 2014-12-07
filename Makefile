@@ -2,11 +2,11 @@ all: server client
 
 server:
 	mkdir -p bin
-	javac -classpath src:lib/gson-2.3.jar src/com/hellhound/battlefree/server/Server.java -d bin
+	javac -classpath src:lib/gson-2.3.jar src/com/hellhounds/battlefree/server/Server.java -d bin
 
 client:
 	mkdir -p bin
-	javac -classpath src:lib/gson-2.3.jar src/com/hellhound/battlefree/server/ClientTest.java -d bin
+	javac -classpath src:lib/gson-2.3.jar src/com/hellhounds/battlefree/server/ClientTest.java -d bin
 
 game:
 	mkdir -p bin
