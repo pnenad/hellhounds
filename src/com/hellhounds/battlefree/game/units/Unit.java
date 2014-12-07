@@ -1,9 +1,11 @@
 package com.hellhounds.battlefree.game.units;
 
 import com.hellhounds.battlefree.game.abilities.Ability;
+import com.hellhounds.battlefree.game.Player;
 
 public class Unit{
 
+    private Player owner;
     private String name;
     private int maxHealth;
     private int currentHealth;
@@ -11,8 +13,9 @@ public class Unit{
     private boolean alive;
     private int armor;
 
-    public Unit(String name, Ability ability, int health)
+    public Unit(String name, Ability ability, int health, Player owner)
     {
+        this.owner = owner;
         this.name = name;
         this.ability = ability;
         this.alive = true;
@@ -52,4 +55,7 @@ public class Unit{
 
     public int getCurrentHealth(){ return currentHealth; }
     public void setCurrentHealth(int currentHealth){ this.currentHealth = currentHealth; }
+
+    public Player getOwner(){ return owner; }
+    public void setOwner(Player owner){ this.owner = owner; }
 }

@@ -10,7 +10,7 @@ public class DamageEffect extends Effect{
     }
     
     @Override
-    public void applyEffect()
+    public void applyEffect(Unit source)
     {
         Unit[] targets = getTargets();
 
@@ -39,8 +39,12 @@ public class DamageEffect extends Effect{
             {
                 target.setCurrentHealth(health - damage);
             }
-            
-            System.out.println(" attacked " + target.getName() + " for " + damage);
+            System.out.format("%s's %s attacked %s's %s for %d\n", 
+                              source.getOwner().getUsername(),
+                              source.getName(),
+                              target.getOwner().getUsername(),
+                              target.getName(),
+                              damage);
         }
     }
 }

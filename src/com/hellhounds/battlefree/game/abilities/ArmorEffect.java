@@ -10,7 +10,7 @@ public class ArmorEffect extends Effect{
     }
 
     @Override
-    public void applyEffect()
+    public void applyEffect(Unit source)
     {
         int addArmor = getNumericalValue();
         Unit[] targets = getTargets();
@@ -19,7 +19,12 @@ public class ArmorEffect extends Effect{
         {
             int currentArmor = target.getArmor();
             target.setArmor(currentArmor + addArmor);
-            System.out.println(" armored " + target.getName() + " for " + addArmor);
+            System.out.format("%s's %s armored %s's %s for %d\n", 
+                              source.getOwner().getUsername(),
+                              source.getName(),
+                              target.getOwner().getUsername(),
+                              target.getName(),
+                              addArmor);
         }
     }
 }

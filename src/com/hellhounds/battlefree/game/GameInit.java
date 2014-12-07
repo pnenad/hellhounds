@@ -7,13 +7,17 @@ public class GameInit{
     public static void main(String[] args)
     {
         PlayerBuilder pb = new PlayerBuilder("Mannebind");
-        Player p1 = pb.unit1(new Footsoldier()).unit2(new Archer()).
-                    unit3(new Defender()).gold(1).steel(2).crystal(3).
+        
+        Player p1 = new Player("Mannebind");
+        p1 = pb.unit1(new Footsoldier(p1)).unit2(new Archer(p1)).
+                    unit3(new Defender(p1)).gold(1).steel(2).crystal(3).
                     create();
 
         pb = new PlayerBuilder("iEzpeN");
-        Player p2 = pb.unit1(new Barbarian()).unit2(new Footsoldier()).
-                    unit3(new Catapult()).gold(3).steel(2).crystal(1).
+
+        Player p2 = new Player("iEzpeN");
+        p2 = pb.unit1(new Barbarian(p2)).unit2(new Footsoldier(p2)).
+                    unit3(new Catapult(p2)).gold(3).steel(2).crystal(1).
                     create();
 
         Game game = new Game(p1, p2, 1);
@@ -33,10 +37,13 @@ public class GameInit{
         p2.getUnit3().getAbility().getPrimary().addTarget(p1.getUnit2());
         p2.getUnit3().getAbility().getSecondary().addTarget(p1.getUnit1());
 
+        System.out.println("-------------------- COMBAT LOG --------------------------\n");
         game.resolveEffect("ARMOR");
         game.resolveEffect("DAMAGE");
         game.resolveEffect("HEAL");
+        System.out.println();
 
+        System.out.println("---------------------   STATS   --------------------------\n");
         System.out.println("Player One:\n" + game.getPlayer1().toString());
         System.out.println("\nPlayer Two:\n" + game.getPlayer2().toString());
 

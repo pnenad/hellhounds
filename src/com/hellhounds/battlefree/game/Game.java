@@ -36,16 +36,10 @@ public class Game{
                     String secondary = unit.getAbility().getSecondary().getType();
 
                     if(primary.equals(type))
-                    {
-                        System.out.format("%s's %s", player.getUsername(), unit.getName());
-                        unit.getAbility().getPrimary().applyEffect();
-                    }
+                        unit.getAbility().getPrimary().applyEffect(unit);
 
                     if(secondary.equals(type))
-                    {
-                        System.out.format("%s's %s", player.getUsername(), unit.getName());
-                        unit.getAbility().getSecondary().applyEffect();
-                    }
+                        unit.getAbility().getSecondary().applyEffect(unit);
                 }
             }
         }

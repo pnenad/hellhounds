@@ -10,7 +10,7 @@ public class HealEffect extends Effect{
     }
 
     @Override
-    public void applyEffect()
+    public void applyEffect(Unit source)
     {
         int heal = this.numericalValue;
         int health = target.getHealth();
@@ -19,7 +19,12 @@ public class HealEffect extends Effect{
         for(Unit target : targets)
         {
             target.setHealth(health + heal);
-            System.out.println(" healed " + target.getName() + " for " + heal);
+            System.out.format("%s's %s healed  %s's %s for %d\n", 
+                              source.getOwner().getUsername(),
+                              source.getName(),
+                              target.getOwner().getUsername(),
+                              target.getName(),
+                              heal);
         }
     }
 }

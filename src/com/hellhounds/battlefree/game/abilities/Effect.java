@@ -44,5 +44,5 @@ public abstract class Effect{
 
     /* ------------ ABSTRACT --------------------*/
 
-    public abstract void applyEffect();
+    public abstract void applyEffect(Unit source);
 }
