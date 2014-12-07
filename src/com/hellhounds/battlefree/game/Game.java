@@ -1,5 +1,7 @@
 package com.hellhounds.battlefree.game;
 
+import com.hellhounds.battlefree.game.units.Unit;
+
 public class Game{
 
     private Player player1;
@@ -16,6 +18,37 @@ public class Game{
         this.gameID = gameID;
         this.roundNr = 0;
         this.winStatus = 0;
+    }
+
+    public void resolveEffect(String type)
+    {
+        Player[] players = {player1, player2};
+
+        for(Player player : players)
+        {
+            Unit[] units = player.getUnits();
+
+            for(Unit unit : units)
+            {
+                if(unit.getAbility().isActivated())
+                {
+                    String primary = unit.getAbility().getPrimary().getType();
+                    String secondary = unit.getAbility().getSecondary().getType();
+
+                    if(primary.equals(type))
+                    {
+                        System.out.format("%s's %s", player.getUsername(), unit.getName());
+                        unit.getAbility().getPrimary().applyEffect();
+                    }
+
+                    if(secondary.equals(type))
+                    {
+                        System.out.format("%s's %s", player.getUsername(), unit.getName());
+                        unit.getAbility().getSecondary().applyEffect();
+                    }
+                }
+            }
+        }
     }
 
     public Player getPlayer1() { return player1; }

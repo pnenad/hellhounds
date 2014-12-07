@@ -10,14 +10,16 @@ public class ArmorEffect extends Effect{
     }
 
     @Override
-    public void applyEffect(Unit[] targets)
+    public void applyEffect()
     {
         int addArmor = getNumericalValue();
-        
+        Unit[] targets = getTargets();
+
         for(Unit target : targets)
         {
             int currentArmor = target.getArmor();
             target.setArmor(currentArmor + addArmor);
+            System.out.println(" armored " + target.getName() + " for " + addArmor);
         }
     }
 }

@@ -17,6 +17,12 @@ public class Player{
         this.username = username;
     }
 
+    public Unit[] getUnits()
+    {
+        Unit[] units = {unit1, unit2, unit3};
+        return units;
+    }
+
     public String getUsername() { return username; }
     public void setUsername(String username){ this.username = username; }
 
