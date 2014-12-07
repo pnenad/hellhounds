@@ -1,4 +1,4 @@
-ll: server client
+all: server client
 
 server:
 	mkdir -p bin
