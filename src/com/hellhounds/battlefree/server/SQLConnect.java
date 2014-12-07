@@ -1,4 +1,4 @@
-package com.hellhound.battlefree.server;
+package com.hellhounds.battlefree.server;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

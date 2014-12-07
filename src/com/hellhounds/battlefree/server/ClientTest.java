@@ -1,7 +1,7 @@
-package com.hellhound.battlefree.server;
+package com.hellhounds.battlefree.server;
 import java.io.*; 
 import java.net.*; 
-import com.hellhound.battlefree.util.*;
+import com.hellhounds.battlefree.util.*;
 
 /**Test class for Client Side*/
 /**WORKING*/

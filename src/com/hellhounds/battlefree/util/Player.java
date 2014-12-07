@@ -1,4 +1,4 @@
-package com.hellhound.battlefree.util;
+package com.hellhounds.battlefree.util;
 
 public class Player {
         private String username;

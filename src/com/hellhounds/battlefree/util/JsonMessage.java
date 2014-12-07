@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.hellhound.battlefree.util;
+package com.hellhounds.battlefree.util;
 
 import com.google.gson.annotations.SerializedName;
 
