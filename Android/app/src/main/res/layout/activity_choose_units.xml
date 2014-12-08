@@ -193,6 +193,8 @@
         android:layout_marginTop="45dp"
         android:layout_marginRight="45dp"
         android:layout_marginLeft="45dp"
-        android:layout_centerHorizontal="true"></FrameLayout>
+        android:layout_centerHorizontal="true">
+
+    </FrameLayout>
 
 </RelativeLayout>

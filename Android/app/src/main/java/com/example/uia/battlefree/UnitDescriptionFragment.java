@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 /**
@@ -21,7 +22,7 @@ import android.widget.Button;
  */
 public class UnitDescriptionFragment extends Fragment{
 
-    Button currOpen;
+    Button currOpen = null;
 
     public UnitDescriptionFragment() {
         // Required empty public constructor
@@ -35,7 +36,7 @@ public class UnitDescriptionFragment extends Fragment{
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_unit_description, container, false);
-
+        setUnitDesc("a","b","c");
         Button addButton = (Button) view.findViewById(R.id.addUnitButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,8 +44,16 @@ public class UnitDescriptionFragment extends Fragment{
                 ((ChooseUnits)getActivity()).addUnit(currOpen);
             }
         });
-
         return view;
+    }
+
+    public void setUnitDesc(String name, String aName, String aCost){
+        TextView n = (TextView) getView().findViewById(R.id.unitName);
+        TextView an = (TextView) getView().findViewById(R.id.unitAbilityName);
+        TextView ac = (TextView) getView().findViewById(R.id.unitAbilityCost);
+        n.setText(name);
+        an.setText(aName);
+        ac.setText(aCost);
     }
 
     /**
@@ -65,5 +74,4 @@ public class UnitDescriptionFragment extends Fragment{
     public void setCurrOpen(Button b){
         this.currOpen = b;
     }
-
 }

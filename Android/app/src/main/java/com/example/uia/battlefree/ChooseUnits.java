@@ -1,6 +1,7 @@
 package com.example.uia.battlefree;
 
 import android.annotation.TargetApi;
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -21,7 +23,7 @@ public class ChooseUnits extends FragmentActivity {
     Button CU1;
     Button CU2;
     Button CU3;
-    boolean isOpen = true;
+    String currentlySelected = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class ChooseUnits extends FragmentActivity {
 
         final Button orc = (Button) findViewById(R.id.chooseOrc);
         final Button skeleton = (Button) findViewById(R.id.chooseSkeleton);
-        final Button supplycart= (Button) findViewById(R.id.chooseSupplyCart);
+        final Button supplycart = (Button) findViewById(R.id.chooseSupplyCart);
         final Button thief = (Button) findViewById(R.id.chooseThief);
         final Button vampire = (Button) findViewById(R.id.chooseVampire);
 
@@ -43,70 +45,141 @@ public class ChooseUnits extends FragmentActivity {
         CU2.setVisibility(View.INVISIBLE);
         CU3.setVisibility(View.INVISIBLE);
 
-        orc.setOnClickListener(new View.OnClickListener() {
+        orc.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                UnitDescriptionFragment unitDesc = (UnitDescriptionFragment) getFragmentManager().findFragmentByTag("tag");
-                if(unitDesc == null){
+                UnitDescriptionFragment unitDesc = (UnitDescriptionFragment) getFragmentManager().findFragmentByTag(currentlySelected);
+                if (unitDesc == null) {
+                    currentlySelected = "orc";
                     unitDesc = new UnitDescriptionFragment();
-                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).add(R.id.fragment_container,unitDesc,"tag").commit();
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).add(R.id.fragment_container, unitDesc, currentlySelected).commit();
                     unitDesc.setCurrOpen(orc);
-                }else{
+
+                }else if(unitDesc.getTag() != "orc") {
+                    currentlySelected = "orc";
+                    unitDesc = new UnitDescriptionFragment();
+                    unitDesc.setCurrOpen(orc);
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.fragment_container,unitDesc,currentlySelected).commit();
+                }
+                else {
                     getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).remove(unitDesc).commit();
+                    currentlySelected = null;
                 }
             }
         });
-        skeleton.setOnClickListener(new View.OnClickListener() {
+
+        skeleton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                chooseUnit(skeleton);
+                UnitDescriptionFragment unitDesc = (UnitDescriptionFragment) getFragmentManager().findFragmentByTag(currentlySelected);
+                if (unitDesc == null) {
+                    currentlySelected = "skeleton";
+                    unitDesc = new UnitDescriptionFragment();
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).add(R.id.fragment_container, unitDesc, currentlySelected).commit();
+                    unitDesc.setCurrOpen(skeleton);
+                }else if(unitDesc.getTag() != "skeleton") {
+                    currentlySelected = "skeleton";
+                    unitDesc = new UnitDescriptionFragment();
+                    unitDesc.setCurrOpen(skeleton);
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.fragment_container,unitDesc,currentlySelected).commit();
+                } else {
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).remove(unitDesc).commit();
+                    currentlySelected = null;
+                }
             }
         });
         supplycart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chooseUnit(supplycart);
+                UnitDescriptionFragment unitDesc = (UnitDescriptionFragment) getFragmentManager().findFragmentByTag(currentlySelected);
+                if (unitDesc == null) {
+                    currentlySelected = "supplycart";
+                    unitDesc = new UnitDescriptionFragment();
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).add(R.id.fragment_container, unitDesc, currentlySelected).commit();
+                    unitDesc.setCurrOpen(supplycart);
+                }else if(unitDesc.getTag() != "supplycart") {
+                    currentlySelected = "supplycart";
+                    unitDesc = new UnitDescriptionFragment();
+                    unitDesc.setCurrOpen(supplycart);
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.fragment_container,unitDesc,currentlySelected).commit();
+                }
+                else {
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).remove(unitDesc).commit();
+                    currentlySelected = null;
+                }
             }
         });
         thief.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chooseUnit(thief);
+                UnitDescriptionFragment unitDesc = (UnitDescriptionFragment) getFragmentManager().findFragmentByTag(currentlySelected);
+                if (unitDesc == null) {
+                    currentlySelected = "thief";
+                    unitDesc = new UnitDescriptionFragment();
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).add(R.id.fragment_container, unitDesc, currentlySelected).commit();
+                    unitDesc.setCurrOpen(thief);
+                }else if(unitDesc.getTag() != "thief") {
+                    currentlySelected = "thief";
+                    unitDesc = new UnitDescriptionFragment();
+                    unitDesc.setCurrOpen(thief);
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.fragment_container,unitDesc,currentlySelected).commit();
+
+                }
+                else {
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).remove(unitDesc).commit();
+                    currentlySelected = null;
+                }
             }
         });
         vampire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chooseUnit(vampire);
+                UnitDescriptionFragment unitDesc = (UnitDescriptionFragment) getFragmentManager().findFragmentByTag(currentlySelected);
+                if (unitDesc == null) {
+                    currentlySelected = "vampire";
+                    unitDesc = new UnitDescriptionFragment();
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).add(R.id.fragment_container, unitDesc, currentlySelected).commit();
+                    unitDesc.setCurrOpen(vampire);
+                }else if(unitDesc.getTag() != "vampire") {
+                    currentlySelected = "vampire";
+                    unitDesc = new UnitDescriptionFragment();
+                    unitDesc.setCurrOpen(vampire);
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).replace(R.id.fragment_container,unitDesc,currentlySelected).commit();
+
+                }
+                else {
+                    getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).remove(unitDesc).commit();
+                    currentlySelected = null;
+                }
             }
         });
 
 
-        CU1.setOnClickListener(new View.OnClickListener(){
-           @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-           @Override
-           public void onClick(View view){
-               if(CU1.getVisibility() == View.VISIBLE){
-                   CU1.setVisibility(View.INVISIBLE);
-                   CU1.setBackground(null);
-               }
-           }
-        });
-        CU2.setOnClickListener(new View.OnClickListener(){
+        CU1.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
-            public void onClick(View view){
-                if(CU2.getVisibility() == View.VISIBLE){
+            public void onClick(View view) {
+                if (CU1.getVisibility() == View.VISIBLE) {
+                    CU1.setVisibility(View.INVISIBLE);
+                    CU1.setBackground(null);
+                }
+            }
+        });
+        CU2.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onClick(View view) {
+                if (CU2.getVisibility() == View.VISIBLE) {
                     CU2.setVisibility(View.INVISIBLE);
                     CU2.setBackground(null);
                 }
             }
         });
-        CU3.setOnClickListener(new View.OnClickListener(){
+        CU3.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
-            public void onClick(View view){
-                if(CU3.getVisibility() == View.VISIBLE){
+            public void onClick(View view) {
+                if (CU3.getVisibility() == View.VISIBLE) {
                     CU3.setVisibility(View.INVISIBLE);
                     CU3.setBackground(null);
                 }
@@ -114,12 +187,21 @@ public class ChooseUnits extends FragmentActivity {
         });
     }
 
-    public void addUnit(Button picked){
-        if(!checkIfPicked(picked)){
+    public void addToPickedUnitList(){
+
+    }
+
+    public void removeFromPickedList(){
+
+    }
+
+
+    public void addUnit(Button picked) {
+        if (!checkIfPicked(picked)) {
             chooseUnit(picked);
         }
-        getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).remove(getFragmentManager().findFragmentByTag("tag")).commit();
-
+        getFragmentManager().beginTransaction().setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE).remove(getFragmentManager().findFragmentByTag(currentlySelected)).commit();
+        currentlySelected = null;
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -127,8 +209,8 @@ public class ChooseUnits extends FragmentActivity {
         Drawable chosenUnitBackground = chosenUnit.getBackground();
         ArrayList<Button> pickedList = getPickedList();
         int i = 0;
-        for(Button m : pickedList){
-            if(m.getVisibility() == View.INVISIBLE && i == 0){
+        for (Button m : pickedList) {
+            if (m.getVisibility() == View.INVISIBLE && i == 0) {
                 m.setBackground(chosenUnitBackground);
                 m.setVisibility(View.VISIBLE);
                 i++;
@@ -136,7 +218,7 @@ public class ChooseUnits extends FragmentActivity {
         }
     }
 
-    public ArrayList<Button> getPickedList(){
+    public ArrayList<Button> getPickedList() {
         ArrayList<Button> pickedList = new ArrayList<Button>();
         pickedList.add(CU1);
         pickedList.add(CU2);
@@ -144,39 +226,13 @@ public class ChooseUnits extends FragmentActivity {
         return pickedList;
     }
 
-    public boolean checkIfPicked(Button pushedUnit){
-        boolean picked = false;
-        for(Button chosen : getPickedList()){
-            if(chosen.getBackground() == pushedUnit.getBackground()){
-                picked=true;
+    public boolean checkIfPicked(Button u) {
+        boolean p = false;
+        for (Button b : getPickedList()) {
+            if (b.getBackground() == u.getBackground()) {
+                p = true;
             }
         }
-        return picked;
-    }
-
-
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_choose_units, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        return p;
     }
 }
