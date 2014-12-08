@@ -16,35 +16,22 @@ public class DamageEffect extends Effect{
 
         for(Unit target : targets)
         {
-            int damage = getNumericalValue();
+            int rawDamage = getNumericalValue();
             int armor = target.getArmor();
             int health = target.getCurrentHealth();
 
-            if(armor > 0 )
-            {
-                int rest  = damage - armor;
+            int calcDamage = rawDamage - armor;
+            health  = health - calcDamage;
+            
+            target.setCurrentHealth(health);
 
-                if(rest <= 0 )
-                {
-                    target.setArmor(-rest);
-                    continue;
-                }
-                else
-                {
-                    target.setCurrentHealth(health - rest);
-                    target.setArmor(0);
-                }
-            }
-            else
-            {
-                target.setCurrentHealth(health - damage);
-            }
-            System.out.format("%s's %s attacked %s's %s for %d\n", 
+            System.out.format("%s's %s attacked %s's %s for %d%s\n", 
                               source.getOwner().getUsername(),
                               source.getName(),
                               target.getOwner().getUsername(),
                               target.getName(),
-                              damage);
+                              calcDamage, 
+                              (armor > 0) ? " (" + armor + " blocked by armor)" :  "");
         }
     }
 }

@@ -13,9 +13,8 @@ public class Unit{
     private boolean alive;
     private int armor;
 
-    public Unit(String name, Ability ability, int health, Player owner)
+    public Unit(String name, Ability ability, int health)
     {
-        this.owner = owner;
         this.name = name;
         this.ability = ability;
         this.alive = true;
