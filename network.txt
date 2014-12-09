@@ -1,0 +1,52 @@
+This document describes how networking
+works in the application.
+
+Network message types:
+
+1.1: PLZ
+Client to server, requesting to start a game
+* Unit selection
+* Username
+
+1.2: PLZ(Opponent)
+Client to server, requesting to start a game with a specific opponent
+* Unit Selection
+* Username
+* Opponent Username
+
+2: INIT
+Server to client, initializing a game
+* GameID
+* PlayerObject
+	* Units
+		* Stats
+	* Username
+	* Resources
+* OpponentObject
+	* Units
+		* Stats
+	* Username
+
+3: TARGETS
+Client to server, specifying targets (playing a round)
+* GameID
+* Username
+* Targeting codes
+
+4: NEXTROUND
+Server to client, sending combat results and pushing next round
+* GameID
+* PlayerObject
+	* Units
+		* Stats
+	* Username
+	* Resources
+* OpponentObject
+	* Units
+		* Stats
+	* Username
+
+5: END
+Displaying winner and/or loser(s) and ending the game
+	* GameID
+	* WinStatus
