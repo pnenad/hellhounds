@@ -1,5 +1,7 @@
 package com.hellhounds.battlefree.game.abilities;
 
+import com.hellhounds.battlefree.game.abilities.effects.Effect;
+
 public class Ability{
 
     private String name;

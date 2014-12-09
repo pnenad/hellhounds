@@ -1,23 +1,55 @@
 package com.hellhounds.battlefree.game;
 
+import com.hellhounds.battlefree.game.abilities.effects.EffectType;
 import com.hellhounds.battlefree.game.units.*;
 
 public class GameInit{
 
     public static void main(String[] args)
     {
-        PlayerBuilder pb = new PlayerBuilder("Mannebind");
-        Player p1 = pb.unit1(new Footsoldier()).unit2(new Archer()).
-                    unit3(new Defender()).gold(1).steel(2).crystal(3).
-                    create();
+        
+        Player p1 = new Player("Mannebind", new Mage(), new Archer(),
+                               new Defender());
 
-        pb = new PlayerBuilder("iEzpeN");
-        Player p2 = pb.unit1(new Barbarian()).unit2(new Footsoldier()).
-                    unit3(new Catapult()).gold(3).steel(2).crystal(1).
-                    create();
+        Player p2 = new Player("iEzpeN", new Supplycart(), new Thief(),
+                               new Catapult());
 
         Game game = new Game(p1, p2, 1);
 
+        p1.getUnit1().getAbility().setActivated(true);
+        p1.getUnit1().getAbility().getPrimary().addTarget(p2.getUnit1());
+        p1.getUnit1().getAbility().getSecondary().addTarget(p1.getUnit1());
+
+        p1.getUnit3().getAbility().setActivated(true);
+        p1.getUnit3().getAbility().getPrimary().addTarget(p2.getUnit1());
+        p1.getUnit3().getAbility().getSecondary().addTarget(p1.getUnit1());
+        p1.getUnit3().getAbility().getSecondary().addTarget(p1.getUnit2());
+        p1.getUnit3().getAbility().getSecondary().addTarget(p1.getUnit3());
+
+        p2.getUnit3().getAbility().setActivated(true);
+        p2.getUnit3().getAbility().getPrimary().addTarget(p1.getUnit2());
+        p2.getUnit3().getAbility().getSecondary().addTarget(p1.getUnit1());
+        
+        p2.getUnit2().getAbility().setActivated(true);
+        p2.getUnit2().getAbility().getPrimary().addTarget(p1.getUnit3());
+        p2.getUnit2().getAbility().getSecondary().addTarget(p1.getUnit3());
+
+        p2.getUnit1().getAbility().setActivated(true);
+        p2.getUnit1().getAbility().getPrimary().addTarget(p2.getUnit1());
+        p2.getUnit1().getAbility().getSecondary().addTarget(p1.getUnit3());
+
+        System.out.println("-------------------- COMBAT LOG --------------------------\n");
+        game.resolveEffect(EffectType.ARMOR);
+        game.resolveEffect(EffectType.CRUSH);
+        game.resolveEffect(EffectType.DAMAGE);
+        game.resolveEffect(EffectType.PIERCE);
+        game.resolveEffect(EffectType.HEAL);
+        game.resolveEffect(EffectType.ADD);
+        game.resolveEffect(EffectType.STEAL);
+        game.cleanup();
+        System.out.println();
+
+        System.out.println("---------------------   STATS   --------------------------\n");
         System.out.println("Player One:\n" + game.getPlayer1().toString());
         System.out.println("\nPlayer Two:\n" + game.getPlayer2().toString());
 

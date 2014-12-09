@@ -1,4 +1,7 @@
 package com.hellhounds.battlefree.game.abilities;
+
+import com.hellhounds.battlefree.game.abilities.effects.DamageEffect;
+
 // This attack should hit all enemies if possible.
 // (Whirlwind)
 public class BarbarianAbility extends Ability{
