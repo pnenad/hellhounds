@@ -6,6 +6,7 @@ import java.io.*;
 import java.net.*;
 import java.util.HashMap;
 import com.hellhounds.battlefree.game.Player;
+import com.hellhounds.battlefree.game.GameDummy;
 
 public class Server{
 
@@ -13,13 +14,14 @@ private HashMap<Long, Thread> threads;
 
 	public Server(){
 		threads = new HashMap<>();
-		Server server = new Server();
+		//Server server = new Server();
 	}
 	
 	public static void main(String argv[]) throws Exception{
 		System.out.println("Starting server...");
 		String message;
-		ServerSocket socket = new ServerSocket(8888);          
+		ServerSocket socket = new ServerSocket(8888);
+		Server server = new Server();
 		while(true){
 			System.out.println("...server running...");
 			Socket conn = socket.accept();
@@ -29,6 +31,11 @@ private HashMap<Long, Thread> threads;
 			System.out.println("Received: " + message);
 			if(message.equals("Nenad")){
 				System.out.println("Thread will spawn here!");
+				try {
+					server.createThread("Nenad");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 
 			System.out.println("Sending reply: " + message);
@@ -50,6 +57,16 @@ private HashMap<Long, Thread> threads;
 		threads.put(id, t);
 		System.out.println("Thread started: " + threads.get(id).getState());
 		t.run();
+	}
+
+	private void createThread(String s){
+		long l = 1;
+		Thread t = new Thread(new GameDummy(l));
+		while(l < 5){
+			threads.put(l, t);
+			System.out.println("Thread started: " + threads.get(l).getState());
+			l = l + 1L;
+		}
 	}
 
 	private void readMessages(){
