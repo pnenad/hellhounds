@@ -3,6 +3,9 @@ package com.hellhounds.battlefree.game.abilities;
 // The most basic attack, for the most basic
 // unit in the game.
 
+import com.hellhounds.battlefree.game.abilities.effects.DamageEffect;
+import com.hellhounds.battlefree.game.abilities.effects.NoneEffect;
+
 public class FootsoldierAbility extends Ability{
 
     public FootsoldierAbility()

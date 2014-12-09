@@ -1,29 +1,30 @@
-package com.hellhounds.battlefree.game.abilities;
+package com.hellhounds.battlefree.game.abilities.effects;
 
 import com.hellhounds.battlefree.game.units.Unit;
 
-public class HealEffect extends Effect{
+public class ArmorEffect extends Effect{
 
-    public HealEffect(int value)
+    public ArmorEffect(int value)
     {
-        super(EffectType.HEAL, value);
+        super(EffectType.ARMOR, value);
     }
 
     @Override
     public void applyEffect(Unit source)
     {
-        int heal = getNumericalValue();
+        int addArmor = getNumericalValue();
         Unit[] targets = getTargets();
 
         for(Unit target : targets)
         {
-            target.setCurrentHealth(target.getCurrentHealth() + heal);
-            System.out.format("%s's %s healed  %s's %s for %d\n", 
+            int currentArmor = target.getArmor();
+            target.setArmor(currentArmor + addArmor);
+            System.out.format("%s's %s armored %s's %s for %d\n", 
                               source.getOwner().getUsername(),
                               source.getName(),
                               target.getOwner().getUsername(),
                               target.getName(),
-                              heal);
+                              addArmor);
         }
     }
 }

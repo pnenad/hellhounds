@@ -4,6 +4,9 @@ package com.hellhounds.battlefree.game.abilities;
 // enemy, and grant itself 5 temporary
 // armor/shield.
 
+import com.hellhounds.battlefree.game.abilities.effects.ArmorEffect;
+import com.hellhounds.battlefree.game.abilities.effects.DamageEffect;
+
 public class DwarfAbility extends Ability{
 	
 	public DwarfAbility()

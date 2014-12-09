@@ -1,6 +1,6 @@
 package com.hellhounds.battlefree.game;
 
-import com.hellhounds.battlefree.game.abilities.EffectType;
+import com.hellhounds.battlefree.game.abilities.effects.EffectType;
 import com.hellhounds.battlefree.game.units.Unit;
 
 public class Game{

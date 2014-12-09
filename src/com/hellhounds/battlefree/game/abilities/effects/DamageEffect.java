@@ -1,4 +1,4 @@
-package com.hellhounds.battlefree.game.abilities;
+package com.hellhounds.battlefree.game.abilities.effects;
 
 import com.hellhounds.battlefree.game.units.Unit;
 
@@ -22,6 +22,14 @@ public class DamageEffect extends Effect{
 
             int calcDamage = rawDamage - armor;
             health  = health - calcDamage;
+
+            if(calcDamage < 0)
+            {
+                armor = -calcDamage;
+                calcDamage = 0;
+            }
+
+
             
             target.setCurrentHealth(health);
 
@@ -30,7 +38,7 @@ public class DamageEffect extends Effect{
                               source.getName(),
                               target.getOwner().getUsername(),
                               target.getName(),
-                              calcDamage, 
+                              calcDamage,
                               (armor > 0) ? " (" + armor + " blocked by armor)" :  "");
         }
     }

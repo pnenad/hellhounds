@@ -1,4 +1,4 @@
-package com.hellhounds.battlefree.game.abilities;
+package com.hellhounds.battlefree.game.abilities.effects;
 
 import com.hellhounds.battlefree.game.units.Unit;
 

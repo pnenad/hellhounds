@@ -45,19 +45,19 @@ public class Player{
                 {
                     case 0:
                         this.gold++;
-                        System.out.format("%s got one GOLD resource\n", 
+                        System.out.format("%s got one GOLD resource\n",
                                           this.username);
                         break;
 
                     case 1:
                         this.steel++;
-                        System.out.format("%s got one STEEL resource\n", 
+                        System.out.format("%s got one STEEL resource\n",
                                           this.username);
                         break;
 
                     case 2:
                         this.crystal++;
-                        System.out.format("%s got one CRYSTAL resource\n", 
+                        System.out.format("%s got one CRYSTAL resource\n",
                                           this.username);
                         break;
 
