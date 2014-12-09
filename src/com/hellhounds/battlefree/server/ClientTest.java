@@ -1,8 +1,6 @@
 package com.hellhounds.battlefree.server;		
  import java.io.*;	  
- import java.net.*; 
- import com.hellhounds.battlefree.util.*;
-import com.hellhounds.battlefree.game.*; 
+ import java.net.*;
  		 
  /**Test class for Client Side*/		
  /**WORKING*/
@@ -51,7 +49,6 @@ public ClientTest(){
 			Socket socket = new Socket("localhost", 8888);
 			DataOutputStream outbound = new DataOutputStream(socket.getOutputStream());
 			BufferedReader incoming = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			//Construct a json string and send it to the server
 			outbound.writeBytes("MESSAGE" + '\n');
 			System.out.println("*****Message sent, waiting for reply*****");
 			messageIn = incoming.readLine();

@@ -2,7 +2,7 @@ package com.hellhounds.battlefree.server;
 //Added basic functionallity for network communication. Simple message exchange between client and server.
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class Server{
 
@@ -14,15 +14,18 @@ public class Server{
 	}
 	
 	public static void main(String argv[]) throws Exception{
+		System.out.println("Starting server...");
 		String message;          
 		ServerSocket socket = new ServerSocket(8888);          
-		while(true){             
+		while(true){
+			System.out.println("Server running...");
 			Socket conn = socket.accept();             
 			BufferedReader incoming = new BufferedReader(new InputStreamReader(conn.getInputStream())); 
 			DataOutputStream outbound = new DataOutputStream(conn.getOutputStream());             
-			message = incoming.readLine();     
-			System.out.println("Received: " + message);      
-			outbound.writeBytes("Reply for message " + message + '\n');          
+			message = incoming.readLine();
+			System.out.println("Received: " + message);
+			System.out.println("Sending reply: " + message);
+			outbound.writeBytes("Reply for message " + message + '\n');
 			conn.close();
 		}
 
