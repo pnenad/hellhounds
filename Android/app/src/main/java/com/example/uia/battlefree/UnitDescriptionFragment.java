@@ -23,6 +23,9 @@ import android.widget.TextView;
 public class UnitDescriptionFragment extends Fragment{
 
     Button currOpen = null;
+    TextView n;
+    TextView an;
+    TextView ac;
 
     public UnitDescriptionFragment() {
         // Required empty public constructor
@@ -31,12 +34,14 @@ public class UnitDescriptionFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_unit_description, container, false);
-        setUnitDesc("a","b","c");
+        TextView n = (TextView) getView().findViewById(R.id.unitName);
+        TextView an = (TextView) getView().findViewById(R.id.unitAbilityName);
+        TextView ac = (TextView) getView().findViewById(R.id.unitAbilityCost);
+        //setUnitDesc("a","b","c");
         Button addButton = (Button) view.findViewById(R.id.addUnitButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,14 +51,14 @@ public class UnitDescriptionFragment extends Fragment{
         });
         return view;
     }
-
     public void setUnitDesc(String name, String aName, String aCost){
-        TextView n = (TextView) getView().findViewById(R.id.unitName);
-        TextView an = (TextView) getView().findViewById(R.id.unitAbilityName);
-        TextView ac = (TextView) getView().findViewById(R.id.unitAbilityCost);
         n.setText(name);
         an.setText(aName);
         ac.setText(aCost);
+    }
+
+    public void setCurrOpen(Button b){
+        this.currOpen = b;
     }
 
     /**
@@ -69,9 +74,5 @@ public class UnitDescriptionFragment extends Fragment{
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
-    }
-
-    public void setCurrOpen(Button b){
-        this.currOpen = b;
     }
 }

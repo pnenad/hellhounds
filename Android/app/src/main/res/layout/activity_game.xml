@@ -9,22 +9,32 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:id="@+id/playerTeam"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentLeft="false"
         android:background="#ff91afff"
+        android:gravity="center_vertical"
         android:padding="20dp"
-        android:gravity="center_vertical">
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player Name"
+            android:id="@+id/playerUsername"
+            android:layout_gravity="center_horizontal"
+            android:textSize="15dp"
+            android:textColor="#ff6974ff" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
+            android:id="@+id/playerUnit1"
             android:background="@drawable/skeletons"
             android:layout_margin="5dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button2"
+            android:id="@+id/playerUnit2"
             android:enabled="false"
             android:background="@drawable/golem"
             android:layout_margin="5dp" />
@@ -32,7 +42,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button3"
+            android:id="@+id/playerUnit3"
             android:background="@drawable/footsoldiers"
             android:layout_margin="5dp" />
     </LinearLayout>
@@ -48,26 +58,36 @@
         android:background="#ffff4d5c"
         android:padding="20dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enemy Name"
+            android:id="@+id/enemyUsername"
+            android:layout_gravity="center_horizontal"
+            android:textSize="15dp"
+            android:textColor="#ff6974ff" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button4"
+            android:id="@+id/enemyUnit1"
             android:background="@drawable/barbarian"
             android:layout_margin="5dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button5"
+            android:id="@+id/enemyUnit2"
             android:background="@drawable/thief"
             android:layout_margin="5dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button6"
+            android:id="@+id/enemyUnit3"
             android:background="@drawable/mushrooms"
             android:layout_margin="5dp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -76,9 +96,72 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/playerTeam"
         android:layout_toLeftOf="@+id/enemyTeam"
-        android:padding="20dp"
         android:background="#cc289017"
-        android:id="@+id/resourceBar"></LinearLayout>
+        android:id="@+id/resourceBar"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:padding="15dp"
+            android:id="@+id/goldResource">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/goldIcon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gold"
+                android:id="@+id/goldAmount" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="15dp"
+            android:id="@+id/steelResource">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/steelIcon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stone"
+                android:id="@+id/steelAmount" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:padding="15dp"
+            android:id="@+id/crystalResource">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/crystalIcon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crystal"
+                android:id="@+id/crystalAmount" />
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -87,12 +170,17 @@
         android:layout_below="@+id/resourceBar"
         android:layout_toRightOf="@+id/playerTeam"
         android:layout_toLeftOf="@+id/enemyTeam"
-        android:gravity="center|center_horizontal">
+        android:gravity="center|center_horizontal"
+        android:id="@+id/combatLogFragmentContainer">
 
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/listView"
-            android:choiceMode="none" />
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/unitDescriptionFragmentContainer"
+        android:layout_below="@+id/resourceBar"
+        android:layout_toLeftOf="@+id/enemyTeam"></LinearLayout>
+
 </RelativeLayout>

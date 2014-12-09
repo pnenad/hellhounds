@@ -25,7 +25,7 @@
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/choose_units"
+        android:id="@+id/unitSelection"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:fillViewport="false"
@@ -166,7 +166,7 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentEnd="false"
         android:layout_centerHorizontal="true"
-        android:id="@+id/chosenUnits"
+        android:id="@+id/pickedUnits"
         android:layout_marginTop="30dp">
 
         <Button
@@ -196,5 +196,12 @@
         android:layout_centerHorizontal="true">
 
     </FrameLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play"
+        android:id="@+id/lookForOpponent"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

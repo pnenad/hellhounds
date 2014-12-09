@@ -9,22 +9,22 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/play_button"
+        android:id="@+id/playButton"
         android:layout_marginBottom="66dp"
         android:width="100dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/play_button" />
+        android:text="@string/playButton" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Game"
-        android:id="@+id/textView3"
+        android:text="@string/app_name"
+        android:id="@+id/gameTitle"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="49dp"
-        android:textSize="100dp"
+        android:textSize="75sp"
         android:textColor="#5D6643" />
 
 </RelativeLayout>
