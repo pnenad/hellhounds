@@ -50,3 +50,30 @@ Server to client, sending combat results and pushing next round
 Displaying winner and/or loser(s) and ending the game
 	* GameID
 	* WinStatus
+	
+	
+Targeting codes:
+
+1:		2:			3:
+M1		P[units1]		S[units2]
+
+1: 
+Mx 			= My source unit number x
+
+2:
+P[units1] 	= Array of primary ability targets
+
+3:
+P[units2] 	= Array of secondary ability targets
+
+units array:
+O 		= Opponent
+M 		= Me
+x (1-3) = Unit at position 1-3
+
+Examples of a unit within the array:
+O1 = Opponents unit at position 1
+M2 = My(sending player's) unit at position 2
+
+Example message:
+TARGETS(M1, P[pTargets], S[sTargets])
