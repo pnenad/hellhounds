@@ -12,12 +12,11 @@ public class HealEffect extends Effect{
     @Override
     public void applyEffect(Unit[] targets)
     {
-        int heal = this.numericalValue;
-        int health = target.getHealth();
+        int heal = getNumericalValue();
 
         for(Unit target : targets)
         {
-            target.setHealth(health + heal);
+            target.setHealth(target.getHealth() + heal);
         }
     }
 }
