@@ -1,7 +1,6 @@
 package com.hellhounds.battlefree.game.abilities;
-// To make this attack more interesting, it should hit 
-// the same target twice for 20 hp. This would make
-// it weaker against armored foes.
+// This attack may hit two targets for 20 damage each
+
 public class ArcherAbility extends Ability{
 
 	public ArcherAbility()
