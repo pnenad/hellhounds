@@ -10,7 +10,7 @@ public class StealResourceEffect extends Effect{
     
     public StealResourceEffect(int value)
     {
-        super("STEAL", value);
+        super(EffectType.STEAL, value);
         resourceList = new ArrayList<String>();
         resourceList.add("STEEL");
         resourceList.add("GOLD");

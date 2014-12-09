@@ -28,9 +28,7 @@ public class Unit{
     {
         return getName() +
                "\n\t  Alive: " + alive +
-               "\n\t  Max Health: " + maxHealth +
-               "\n\t  Current Health: " + currentHealth +
-               "\n\t  Armor: " + armor +
+               "\n\t  Current Health: " + currentHealth + "/" + maxHealth +
                "\n\t  Ability: " + ability.getName() +
                "\n\t  PrimaryEffect: " + ability.getPrimary().toString() +
                "\n\t  SecondaryEffect: " + ability.getSecondary().toString() +

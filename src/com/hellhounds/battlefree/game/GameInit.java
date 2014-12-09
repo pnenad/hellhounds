@@ -1,5 +1,6 @@
 package com.hellhounds.battlefree.game;
 
+import com.hellhounds.battlefree.game.abilities.EffectType;
 import com.hellhounds.battlefree.game.units.*;
 
 public class GameInit{
@@ -34,10 +35,13 @@ public class GameInit{
         p2.getUnit2().getAbility().getSecondary().addTarget(p1.getUnit3());
 
         System.out.println("-------------------- COMBAT LOG --------------------------\n");
-        game.resolveEffect("ARMOR");
-        game.resolveEffect("DAMAGE");
-        game.resolveEffect("HEAL");
-        game.resolveEffect("STEAL");
+        game.resolveEffect(EffectType.ARMOR);
+        game.resolveEffect(EffectType.CRUSH);
+        game.resolveEffect(EffectType.DAMAGE);
+        game.resolveEffect(EffectType.PIERCE);
+        game.resolveEffect(EffectType.HEAL);
+        game.resolveEffect(EffectType.ADD);
+        game.resolveEffect(EffectType.STEAL);
         game.cleanup();
         System.out.println();
 

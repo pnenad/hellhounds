@@ -5,11 +5,11 @@ import com.hellhounds.battlefree.game.units.Unit;
 public abstract class Effect{
 
     private int numericalValue = 0;
-    private String type;
+    private EffectType type;
     private Unit[] targets;
     private int index = 0;
 
-    public Effect(String type, int value)
+    public Effect(EffectType type, int value)
     {
         this.numericalValue = value;
         this.type = type;
@@ -37,7 +37,7 @@ public abstract class Effect{
 
     public int getNumericalValue(){ return numericalValue; }
 
-    public String getType(){ return type; }
+    public EffectType getType(){ return type; }
 
     public Unit[] getTargets(){ return this.targets; }
 

@@ -6,7 +6,7 @@ public class DamageEffect extends Effect{
 
     public DamageEffect(int value)
     {
-        super("DAMAGE", value);
+        super(EffectType.DAMAGE, value);
     }
     
     @Override

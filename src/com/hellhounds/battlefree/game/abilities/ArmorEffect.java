@@ -6,7 +6,7 @@ public class ArmorEffect extends Effect{
 
     public ArmorEffect(int value)
     {
-        super("ARMOR", value);
+        super(EffectType.ARMOR, value);
     }
 
     @Override

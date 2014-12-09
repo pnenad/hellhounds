@@ -6,7 +6,7 @@ public class NoneEffect extends Effect{
 
     public NoneEffect(int value)
     {
-        super("NONE", value);
+        super(EffectType.NONE, value);
     }
 
     @Override

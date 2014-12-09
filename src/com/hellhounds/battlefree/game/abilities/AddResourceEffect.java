@@ -1,10 +1,12 @@
 package com.hellhounds.battlefree.game.abilities;
 
+import com.hellhounds.battlefree.game.units.Unit;
+
 public class AddResourceEffect extends Effect{
 
     public AddResourceEffect(int value)
     {
-        super("ADDRESOURCE", value);
+        super(EffectType.ADD, value);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.hellhounds.battlefree.game;
 
+import com.hellhounds.battlefree.game.abilities.EffectType;
 import com.hellhounds.battlefree.game.units.Unit;
 
 public class Game{
@@ -95,7 +96,7 @@ public class Game{
         return true;
     }
 
-    public void resolveEffect(String type)
+    public void resolveEffect(EffectType type)
     {
         Player[] players = {player1, player2};
 
@@ -107,8 +108,8 @@ public class Game{
             {
                 if(unit.getAbility().isActivated())
                 {
-                    String primary = unit.getAbility().getPrimary().getType();
-                    String secondary = unit.getAbility().getSecondary().getType();
+                    EffectType primary = unit.getAbility().getPrimary().getType();
+                    EffectType secondary = unit.getAbility().getSecondary().getType();
 
                     if(primary.equals(type))
                         unit.getAbility().getPrimary().applyEffect(unit);

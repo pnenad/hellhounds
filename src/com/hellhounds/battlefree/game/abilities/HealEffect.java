@@ -6,19 +6,18 @@ public class HealEffect extends Effect{
 
     public HealEffect(int value)
     {
-        super("HEAL", value);
+        super(EffectType.HEAL, value);
     }
 
     @Override
     public void applyEffect(Unit source)
     {
-        int heal = this.numericalValue;
-        int health = target.getHealth();
+        int heal = getNumericalValue();
         Unit[] targets = getTargets();
 
         for(Unit target : targets)
         {
-            target.setHealth(health + heal);
+            target.setCurrentHealth(target.getCurrentHealth() + heal);
             System.out.format("%s's %s healed  %s's %s for %d\n", 
                               source.getOwner().getUsername(),
                               source.getName(),
