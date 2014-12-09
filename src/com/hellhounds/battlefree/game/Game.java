@@ -3,7 +3,7 @@ package com.hellhounds.battlefree.game;
 import com.hellhounds.battlefree.game.abilities.effects.EffectType;
 import com.hellhounds.battlefree.game.units.Unit;
 
-public class Game{
+public class Game implements Runnable{
 
     private Player player1;
     private Player player2;
@@ -145,4 +145,9 @@ public class Game{
 
     public int getWinStatus() { return winStatus; }
     public void setWinStatus(int winStatus){ this.winStatus = winStatus; }
+
+    @Override
+    public void run() {
+        System.out.println("Hello Kitty!");
+    }
 }

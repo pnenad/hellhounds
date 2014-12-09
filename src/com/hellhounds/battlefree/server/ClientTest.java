@@ -5,6 +5,9 @@ package com.hellhounds.battlefree.server;
  /**Test class for Client Side*/		
  /**WORKING*/
  class ClientTest {
+	 String username;
+	 String password;
+	 String email;
 		
 //Constructor		
 public ClientTest(){		
@@ -24,25 +27,25 @@ public ClientTest(){
 				String[] strarray = args.split("\\,", -1);
 				//if there is one argument use the method for casual player
 				if (strarray.length == 1) {
-					String username = strarray[0];
+					test.username = strarray[0];
 				}
 				//else use the method for registration
 				else {
-					String username = strarray[0];
-					String password = strarray[1];
-					String email = strarray[2];
+					test.username = strarray[0];
+					test.password = strarray[1];
+					test.email = strarray[2];
 				}
 			} else {
 				//check args
 				//if there is one arg call casual player method
 				if (argv.length == 1) {
-					String username = argv[0];;
+					test.username = argv[0];;
 				}
 				//else use the method for registration
 				else {
-					String username = argv[0];
-					String password = argv[1];
-					String email = argv[2];
+					test.username = argv[0];
+					test.password = argv[1];
+					test.email = argv[2];
 				}
 			}
 			String messageIn;
@@ -50,7 +53,7 @@ public ClientTest(){
 			Socket socket = new Socket("158.36.166.82", 8888);
 			DataOutputStream outbound = new DataOutputStream(socket.getOutputStream());
 			BufferedReader incoming = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			outbound.writeBytes("MESSAGE" + '\n');
+			outbound.writeBytes(test.username + '\n');
 			System.out.println("*****Message sent, waiting for reply*****");
 			messageIn = incoming.readLine();
 			System.out.println("*****Message received, printing out*****");
