@@ -38,10 +38,12 @@ public class UnitDescriptionFragment extends Fragment{
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_unit_description, container, false);
-        TextView n = (TextView) getView().findViewById(R.id.unitName);
+
+        /*TextView n = (TextView) getView().findViewById(R.id.unitName);
         TextView an = (TextView) getView().findViewById(R.id.unitAbilityName);
         TextView ac = (TextView) getView().findViewById(R.id.unitAbilityCost);
-        //setUnitDesc("a","b","c");
+        setUnitDesc("a","b","c");*/
+
         Button addButton = (Button) view.findViewById(R.id.addUnitButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +53,8 @@ public class UnitDescriptionFragment extends Fragment{
         });
         return view;
     }
+
+
     public void setUnitDesc(String name, String aName, String aCost){
         n.setText(name);
         an.setText(aName);

@@ -4,6 +4,13 @@
     tools:context="com.example.uia.battlefree.ChooseUnits"
     android:background="@drawable/scroll">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/playButton"
+        android:id="@+id/lookForOpponent"
+        android:layout_centerInParent="true" />
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
@@ -16,7 +23,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView"
-            android:contentDescription="imageSlider"
             android:background="@drawable/woodtexture2"
             android:visibility="visible" />
 
@@ -196,12 +202,5 @@
         android:layout_centerHorizontal="true">
 
     </FrameLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play"
-        android:id="@+id/lookForOpponent"
-        android:layout_centerInParent="true" />
 
 </RelativeLayout>

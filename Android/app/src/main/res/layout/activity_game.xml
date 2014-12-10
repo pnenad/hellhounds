@@ -5,6 +5,15 @@
     android:background="@drawable/scroll">
 
     <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/unitDescriptionFragmentContainer"
+        android:layout_below="@+id/resourceBar"
+        android:layout_toLeftOf="@+id/enemyTeam"
+        android:layout_toRightOf="@+id/playerTeam"></LinearLayout>
+
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
@@ -174,13 +183,5 @@
         android:id="@+id/combatLogFragmentContainer">
 
     </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/unitDescriptionFragmentContainer"
-        android:layout_below="@+id/resourceBar"
-        android:layout_toLeftOf="@+id/enemyTeam"></LinearLayout>
 
 </RelativeLayout>

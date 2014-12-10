@@ -1,17 +1,14 @@
 package com.example.uia.battlefree;
 
-import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
 
 
-public class Game extends Activity {
+public class Game extends FragmentActivity {
 
     String currentlySelected;
 
@@ -23,12 +20,16 @@ public class Game extends Activity {
     Button playerUnit2;
     Button playerUnit3;
 
-    String[] targets;
+    ArrayList<Integer> targets;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        currentlySelected = null;
+
+        targets = new ArrayList<Integer>();
 
         playerUnit1 = (Button) findViewById(R.id.playerUnit1);
         playerUnit2 = (Button) findViewById(R.id.playerUnit2);
@@ -38,84 +39,61 @@ public class Game extends Activity {
         enemyUnit2 = (Button) findViewById(R.id.enemyUnit2);
         enemyUnit3 = (Button) findViewById(R.id.enemyUnit3);
 
-        targets = new String[3];
+        final boolean[] targeting = {false};
 
         playerUnit1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                InGameUnitInfo unitDesc = (InGameUnitInfo) getFragmentManager().findFragmentByTag(currentlySelected);
-                if (unitDesc == null) {
+                PlayerUnitViewFragment playerUnitDesc = (PlayerUnitViewFragment) getFragmentManager().findFragmentByTag(currentlySelected);
+                EnemyUnitViewFragment enemyUnitDesc = (EnemyUnitViewFragment) getFragmentManager().findFragmentByTag(currentlySelected);
+                targeting[0] = false;
+                if (playerUnitDesc == null) {
                     currentlySelected = "playerUnit1";
-                    unitDesc = new InGameUnitInfo();
-                    getFragmentManager().beginTransaction().setCustomAnimations(R.transition.enter_from_left,R.transition.enter_from_left).add(R.id.unitDescriptionFragmentContainer, unitDesc, currentlySelected).commit();
-                    unitDesc.setCurrOpen(playerUnit1);
-                }else if(!unitDesc.getTag().equals("playerUnit1")) {
+                    playerUnitDesc = new PlayerUnitViewFragment();
+                    getFragmentManager().beginTransaction().setCustomAnimations(R.transition.enter_from_left, R.transition.exit_to_left).add(R.id.unitDescriptionFragmentContainer, playerUnitDesc, currentlySelected).commit();
+                }else if(!playerUnitDesc.getTag().equals("playerUnit1")) {
                     currentlySelected = "playerUnit1";
-                    unitDesc = new InGameUnitInfo();
-                    unitDesc.setCurrOpen(playerUnit1);
-                    getFragmentManager().beginTransaction().setCustomAnimations(R.transition.enter_from_left, R.transition.enter_from_left).replace(R.id.unitDescriptionFragmentContainer,unitDesc,currentlySelected).commit();
+                    playerUnitDesc = new PlayerUnitViewFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.unitDescriptionFragmentContainer, playerUnitDesc, currentlySelected).commit();
                 } else {
-                    getFragmentManager().beginTransaction().setCustomAnimations(R.transition.enter_from_left, R.transition.enter_from_left).remove(unitDesc).commit();
+                    getFragmentManager().beginTransaction().setCustomAnimations(R.transition.exit_to_right,R.transition.enter_from_right).remove(playerUnitDesc).commit();
                     currentlySelected = null;
                 }
             }
         });
+
+        enemyUnit1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(targeting[0]){
+                    if(targets.contains(enemyUnit1.getId())){
+                        targets.remove(enemyUnit1.getId());
+                    }else{
+                        targets.add(enemyUnit1.getId());
+                    }
+                }else{
+                    PlayerUnitViewFragment playerUnitDesc = (PlayerUnitViewFragment) getFragmentManager().findFragmentByTag(currentlySelected);
+                    EnemyUnitViewFragment enemyUnitDesc = (EnemyUnitViewFragment) getFragmentManager().findFragmentByTag(currentlySelected);
+                    if (playerUnitDesc == null) {
+                        currentlySelected = "enemyUnit1";
+                        playerUnitDesc = new PlayerUnitViewFragment();
+                        getFragmentManager().beginTransaction().setCustomAnimations(R.transition.exit_to_right, R.transition.enter_from_right).add(R.id.unitDescriptionFragmentContainer, playerUnitDesc, currentlySelected).commit();
+                    }else if(!playerUnitDesc.getTag().equals("enemyUnit1")) {
+                        currentlySelected = "enemyUnit1";
+                        playerUnitDesc = new PlayerUnitViewFragment();
+                        getFragmentManager().beginTransaction().replace(R.id.unitDescriptionFragmentContainer, playerUnitDesc, currentlySelected).commit();
+                    } else {
+                        getFragmentManager().beginTransaction().setCustomAnimations(R.transition.exit_enemy,R.transition.enter_from_left).remove(playerUnitDesc).commit();
+                        currentlySelected = null;
+                    }
+                }
+
+            }
+        });
     }
 
-    public ArrayList<Integer> targeting(){
+    public void targeting(){
         final ArrayList<Integer> targets = new ArrayList<Integer>();
-        boolean targeting = true;
-
-        while(targeting){
-            enemyUnit1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(!targets.contains(enemyUnit1.getId())){
-                        targets.add(enemyUnit1.getId());
-                    }else{
-                        targets.remove(enemyUnit1.getId());
-                    }
-                }
-            });
-            enemyUnit2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(!targets.contains(enemyUnit2.getId())){
-                        targets.add(enemyUnit2.getId());
-                    }else{
-                        targets.remove(enemyUnit2.getId());
-                    }
-                }
-            });
-            enemyUnit3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(!targets.contains(enemyUnit3.getId())){
-                        targets.add(enemyUnit3.getId());
-                    }else{
-                        targets.remove(enemyUnit3.getId());
-                    }
-                }
-            });
-            playerUnit1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //targeting = false;
-                }
-            });
-            playerUnit2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //targeting = false;
-                }
-            });
-            playerUnit3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //targeting = false;
-                }
-            });
+        final boolean[] targeting = {true};
         }
-        return targets;
-     }
 }

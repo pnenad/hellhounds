@@ -13,5 +13,6 @@
     <string name="addUnitButton">Add Unit</string>
     <string name="title_activity_game">Game</string>
     <string name="title_activity_searching_for_opponent">SearchingForOpponent</string>
+    <string name="start">Start</string>
 
 </resources>

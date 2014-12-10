@@ -56,7 +56,7 @@ public class ChooseUnits extends FragmentActivity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ChooseUnits.this, SearchingForOpponent.class);
+                startActivity(new Intent(ChooseUnits.this, SearchingForOpponent.class));
 
                 /*ArrayList<String> nameList = new ArrayList<String>();
                 ArrayList<String> abilityList = new ArrayList<String>();
