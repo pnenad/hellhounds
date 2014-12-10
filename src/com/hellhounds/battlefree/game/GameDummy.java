@@ -5,14 +5,20 @@ package com.hellhounds.battlefree.game;
  */
 public class GameDummy implements Runnable {
 
-    Long l;
+	Long l;
+	public boolean suspended;
 
-    public GameDummy(Long l){
-        this.l = l;
-    }
+  	public GameDummy(Long l){
+        	this.l = l;
+		suspended = false;
+    	}
 
-    @Override
-    public void run() {
-        System.out.println("This is object nr: " + l);
-    }
+	public static void main(String[] argv){
+	}
+
+    	@Override
+	public void run(){
+		System.out.println("This is thread nr: " + l);
+		try{ Thread.sleep(3000); } catch (Exception e) { e.printStackTrace(); }
+	}
 }

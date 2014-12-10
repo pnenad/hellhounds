@@ -59,13 +59,17 @@ private HashMap<Long, Thread> threads;
 		t.run();
 	}
 
-	private void createThread(String s){
+	private void createThread(String s) throws InterruptedException{
 		long l = 1;
-		Thread t = new Thread(new GameDummy(l));
-		while(l < 5){
+		while(l<5){
+			Thread t = new Thread(new GameDummy(l));
 			threads.put(l, t);
-			System.out.println("Thread started: " + threads.get(l).getState());
-			l = l + 1L;
+			System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
+			threads.get(l).start();
+			System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
+			threads.get(l).run();
+			System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
+			l=l+1L;
 		}
 	}
 
