@@ -1,6 +1,6 @@
 package com.hellhounds.battlefree.game.abilities;
 
-import com.hellhounds.battlefree.game.abilities.effects.DamageEffect;
+import com.hellhounds.battlefree.game.effects.DamageEffect;
 
 // This attack should hit all enemies if possible.
 // (Whirlwind)

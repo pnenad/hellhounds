@@ -1,6 +1,6 @@
 package com.hellhounds.battlefree.game.abilities;
 
-import com.hellhounds.battlefree.game.abilities.effects.*;
+import com.hellhounds.battlefree.game.effects.*;
 
 public class VampireAbility extends Ability{
 

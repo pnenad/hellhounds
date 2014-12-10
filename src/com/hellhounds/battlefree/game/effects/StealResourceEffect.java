@@ -1,4 +1,4 @@
-package com.hellhounds.battlefree.game.abilities.effects;
+package com.hellhounds.battlefree.game.effects;
 
 import com.hellhounds.battlefree.game.units.Unit;
 import java.util.ArrayList;

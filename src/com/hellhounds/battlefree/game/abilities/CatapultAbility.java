@@ -3,7 +3,7 @@ package com.hellhounds.battlefree.game.abilities;
 // The catapult has poor aim but hits hard.
 // As such it will hit a random (living) enemy unit.
 
-import com.hellhounds.battlefree.game.abilities.effects.DamageEffect;
+import com.hellhounds.battlefree.game.effects.DamageEffect;
 
 public class CatapultAbility extends Ability{
 

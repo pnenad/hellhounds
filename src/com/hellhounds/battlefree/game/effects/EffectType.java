@@ -1,4 +1,4 @@
-package com.hellhounds.battlefree.game.abilities.effects;
+package com.hellhounds.battlefree.game.effects;
 
 public enum EffectType {
     ADD, ARMOR, CRUSH, DAMAGE, HEAL, NONE, PIERCE, STEAL

@@ -4,8 +4,8 @@ package com.hellhounds.battlefree.game.abilities;
 // enemy, and grant each teammate 10 temporary
 // armor/shield.
 
-import com.hellhounds.battlefree.game.abilities.effects.ArmorEffect;
-import com.hellhounds.battlefree.game.abilities.effects.DamageEffect;
+import com.hellhounds.battlefree.game.effects.ArmorEffect;
+import com.hellhounds.battlefree.game.effects.DamageEffect;
 
 public class DefenderAbility extends Ability{
 	

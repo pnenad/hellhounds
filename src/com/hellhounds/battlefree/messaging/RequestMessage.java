@@ -5,23 +5,23 @@ package com.hellhounds.battlefree.messaging;
  * initialization of a new game.
  */
 
-public class PLZMessage extends Message{
+public class RequestMessage extends Message{
 
-    private String[] units;
     private String username;
     private String opponent;
     private boolean challenge = false;
+    private JsonUnit[] units;
 
-    public PLZMessage(String username, String[] units)
+    public RequestMessage(String username, JsonUnit[] units)
     {
-        super(MessageType.PLZ);
+        super(MessageType.REQUEST);
         this.username = username;
         this.units = units;
     }
 
-    public PLZMessage(String username, String opponent, String[] units)
+    public RequestMessage(String username, String opponent, JsonUnit[] units)
     {
-        super(MessageType.PLZ);
+        super(MessageType.REQUEST);
         this.username = username;
         this.opponent = opponent;
         this.units = units;
@@ -35,8 +35,8 @@ public class PLZMessage extends Message{
     public String getOpponent() { return opponent; }
     public void setOpponent(String opponent) { this.opponent = opponent; }
 
-    public String[] getUnits() { return units; }
-    public void setUnits(String[] units){ this.units = units; }
+    public JsonUnit[] getUnits() { return units; }
+    public void setUnits(JsonUnit[] units){ this.units = units; }
 
     public String getUsername(){ return username; }
     public void setUsername(String username){ this.username = username; }

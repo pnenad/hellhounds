@@ -1,7 +1,7 @@
 package com.hellhounds.battlefree.game.abilities;
 
-import com.hellhounds.battlefree.game.abilities.effects.DamageEffect;
-import com.hellhounds.battlefree.game.abilities.effects.StealResourceEffect;
+import com.hellhounds.battlefree.game.effects.DamageEffect;
+import com.hellhounds.battlefree.game.effects.StealResourceEffect;
 
 public class ThiefAbility extends Ability{
 

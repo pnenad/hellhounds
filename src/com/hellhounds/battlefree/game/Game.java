@@ -1,7 +1,11 @@
 package com.hellhounds.battlefree.game;
 
-import com.hellhounds.battlefree.game.abilities.effects.EffectType;
+import com.hellhounds.battlefree.game.effects.EffectType;
 import com.hellhounds.battlefree.game.units.Unit;
+import com.hellhounds.battlefree.messaging.JsonUnit;
+import com.hellhounds.battlefree.messaging.Message;
+import com.hellhounds.battlefree.messaging.Target;
+import com.hellhounds.battlefree.messaging.TargetsMessage;
 
 public class Game{
 
@@ -19,6 +23,95 @@ public class Game{
         this.gameID = gameID;
         this.roundNr = 0;
         this.winStatus = 0;
+    }
+
+    /**
+     * Discerns if the sender of the message is player1 or player2
+     * in the Game, then resolves targetting based on message.
+     * @param message
+     */
+    public void resolveTargetsMessage(TargetsMessage message)
+    {
+        if(message.getFromUsername().equalsIgnoreCase(player1.getUsername()))
+        {
+            addTargets(player1, player2, message.getActions());
+        }
+        else
+        {
+            addTargets(player2, player1, message.getActions());
+        }
+    }
+
+    /**
+     * Loops through JsonUnits and tries to fetch a Game Unit
+     * based on its name and player.
+     * If successful and the JsonUnit is marked as activated,
+     * the Game Unit is set as activated as well.
+     * Steps further into mapTargets.
+     * Only locally called from resolveTargetsMessage.
+     * @param player
+     * @param opponent
+     * @param units
+     */
+    private void addTargets(Player player, Player opponent, JsonUnit[] units)
+    {
+        for(JsonUnit jsonUnit : units)
+        {
+            Unit unit = player.getUnitMap().get(jsonUnit.getUnitName());
+
+            if(unit != null && jsonUnit.isActivated())
+            {
+                unit.getAbility().setActivated(true);
+                mapTargets(player, opponent, unit, jsonUnit);
+            }
+        }
+    }
+
+    /**
+     * A fairly inelegant method.
+     * Used for mapping targets from a message to the
+     * actual Units in the active Game.
+     * May need some rework.
+     * @param player
+     * @param opponent
+     * @param unitSource
+     * @param jsonUnitSource
+     */
+    private void mapTargets(Player player, Player opponent, Unit unitSource, JsonUnit jsonUnitSource)
+    {
+        if(jsonUnitSource.getPrimaryTargets().length > 0)
+        {
+            for(Target target : jsonUnitSource.getPrimaryTargets())
+            {
+                String targetUnitString = target.getTargetUnitName();
+                // If the target of the ability and source of the ability is owned by the same player
+                if(target.getTargetUsername().equalsIgnoreCase(player.getUsername()))
+                {
+                    unitSource.getAbility().getPrimary().addTarget(player.getUnitMap().get(targetUnitString));
+                }
+                else
+                {
+                    unitSource.getAbility().getPrimary().addTarget(opponent.getUnitMap().get(targetUnitString));
+                }
+            }
+        }
+
+        if(jsonUnitSource.getSecondaryTargets().length > 0)
+        {
+            for(Target target : jsonUnitSource.getSecondaryTargets())
+            {
+                String targetUnitString = target.getTargetUnitName();
+                // If the target of the ability and source of the ability is owned by the same player
+                if(target.getTargetUsername().equalsIgnoreCase(player.getUsername()))
+                {
+                    unitSource.getAbility().getSecondary().addTarget(player.getUnitMap().get(targetUnitString));
+                }
+                else
+                {
+                    unitSource.getAbility().getSecondary().addTarget(opponent.getUnitMap().get(targetUnitString));
+                }
+            }
+        }
     }
 
     public void cleanup()

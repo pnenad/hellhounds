@@ -1,7 +1,7 @@
 package com.hellhounds.battlefree.game.abilities;
 
-import com.hellhounds.battlefree.game.abilities.effects.CrushEffect;
-import com.hellhounds.battlefree.game.abilities.effects.DamageEffect;
+import com.hellhounds.battlefree.game.effects.CrushEffect;
+import com.hellhounds.battlefree.game.effects.DamageEffect;
 
 public class GolemAbility extends Ability {
 

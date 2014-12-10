@@ -6,13 +6,13 @@ package com.hellhounds.battlefree.messaging;
  * username for identification.
  */
 
-public class TARGETSMessage extends Message{
+public class TargetsMessage extends Message{
 
     private long gameID;
     private String fromUsername;
-    private UnitAction[] actions;
+    private JsonUnit[] actions;
 
-    public TARGETSMessage(long gameID, String fromUsername, UnitAction[] actions)
+    public TargetsMessage(long gameID, String fromUsername, JsonUnit[] actions)
     {
         super(MessageType.TARGETS);
         this.gameID = gameID;
@@ -26,6 +26,6 @@ public class TARGETSMessage extends Message{
     public String getFromUsername() { return fromUsername; }
     public void setFromUsername(String fromUsername) { this.fromUsername = fromUsername; }
 
-    public UnitAction[] getActions() { return actions; }
-    public void setActions(UnitAction[] actions) { this.actions = actions; }
+    public JsonUnit[] getActions() { return actions; }
+    public void setActions(JsonUnit[] actions) { this.actions = actions; }
 }
