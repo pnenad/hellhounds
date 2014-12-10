@@ -2,6 +2,10 @@ package com.hellhounds.battlefree.game;
 
 import java.util.HashMap;
 
+/**
+ * This class is not used at the moment, will be needed
+ * to let a user have multiple active games at the same time.
+ */
 public class User{
     
     private String username;
