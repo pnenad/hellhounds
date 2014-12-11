@@ -7,7 +7,7 @@ import com.hellhounds.battlefree.messaging.Message;
 import com.hellhounds.battlefree.messaging.Target;
 import com.hellhounds.battlefree.messaging.TargetsMessage;
 
-public class Game{
+public class Game implements Runnable{
 
     private Player player1;
     private Player player2;
@@ -238,4 +238,9 @@ public class Game{
 
     public int getWinStatus() { return winStatus; }
     public void setWinStatus(int winStatus){ this.winStatus = winStatus; }
+
+    @Override
+    public void run() {
+        System.out.println("Hello Kitty!");
+    }
 }
