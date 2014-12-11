@@ -1,6 +1,7 @@
 package com.example.uia.battlefree;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -23,6 +24,11 @@ import android.widget.TextView;
 public class UnitDescriptionFragment extends Fragment{
 
     Button currOpen = null;
+
+    String unitName;
+    String unitAbilityName;
+    String unitAbilityCost;
+
     TextView n;
     TextView an;
     TextView ac;
@@ -39,16 +45,18 @@ public class UnitDescriptionFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_unit_description, container, false);
 
-        /*TextView n = (TextView) getView().findViewById(R.id.unitName);
-        TextView an = (TextView) getView().findViewById(R.id.unitAbilityName);
-        TextView ac = (TextView) getView().findViewById(R.id.unitAbilityCost);
-        setUnitDesc("a","b","c");*/
+
+        n = (TextView) view.findViewById(R.id.unitName);
+        an = (TextView) view.findViewById(R.id.unitAbilityName);
+        ac = (TextView) view.findViewById(R.id.unitAbilityCost);
+
+        setUnitDesc(unitName,unitAbilityName,unitAbilityCost);
 
         Button addButton = (Button) view.findViewById(R.id.addUnitButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((ChooseUnits)getActivity()).addUnit(currOpen);
+                ((ChooseUnits)getActivity()).addUnit(currOpen, unitName);
             }
         });
         return view;
@@ -60,6 +68,10 @@ public class UnitDescriptionFragment extends Fragment{
         an.setText(aName);
         ac.setText(aCost);
     }
+
+    public void setUnitName(String n){this.unitName = n;}
+    public void setUnitAbilityName(String n){this.unitAbilityName = n;}
+    public void setUnitAbilityCost(String n){this.unitAbilityCost = n;}
 
     public void setCurrOpen(Button b){
         this.currOpen = b;

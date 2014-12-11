@@ -44,8 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/playerUnit2"
-            android:enabled="false"
-            android:background="@drawable/golem"
+            android:background="@drawable/dwarf"
             android:layout_margin="5dp" />
 
         <Button

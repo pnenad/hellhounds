@@ -14,7 +14,8 @@
         android:width="100dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/playButton" />
+        android:text="@string/playButton"
+        android:background="@drawable/buttonlong_brown"/>
 
     <TextView
         android:layout_width="wrap_content"
