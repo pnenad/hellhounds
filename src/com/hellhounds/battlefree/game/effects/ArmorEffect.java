@@ -4,9 +4,9 @@ import com.hellhounds.battlefree.game.units.Unit;
 
 public class ArmorEffect extends Effect{
 
-    public ArmorEffect(int value)
+    public ArmorEffect(int value, boolean friendly, boolean multiple)
     {
-        super(EffectType.ARMOR, value);
+        super(EffectType.ARMOR, value, friendly, multiple);
     }
 
     @Override

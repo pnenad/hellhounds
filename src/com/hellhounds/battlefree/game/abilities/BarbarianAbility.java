@@ -9,8 +9,8 @@ public class BarbarianAbility extends Ability{
 	public BarbarianAbility()
 	{
 		super("Whirlwind", new Payment (2, 0, 0, 0), 
-              new DamageEffect(15),
-              new DamageEffect(15));
+              new DamageEffect(15, false, false),
+              new DamageEffect(15, false, false));
 	}
 	
 }

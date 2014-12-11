@@ -12,8 +12,8 @@ public class DwarfAbility extends Ability{
 	public DwarfAbility()
 	{
 		super("Steel wall", new Payment(1, 1, 0, 0),
-			  new DamageEffect(25),
-              new ArmorEffect(5));
+			  new DamageEffect(25, false, false),
+              new ArmorEffect(5, true, false));
 	}
 	
 }

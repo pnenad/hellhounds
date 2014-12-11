@@ -4,9 +4,9 @@ import com.hellhounds.battlefree.game.units.Unit;
 
 public class NoneEffect extends Effect{
 
-    public NoneEffect(int value)
+    public NoneEffect()
     {
-        super(EffectType.NONE, value);
+        super(EffectType.NONE, 0, true, false);
     }
 
     @Override

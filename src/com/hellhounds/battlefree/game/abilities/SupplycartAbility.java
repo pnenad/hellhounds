@@ -7,6 +7,6 @@ public class SupplycartAbility extends Ability{
     public SupplycartAbility()
     {
         super("Reinforcements", new Payment(0, 0, 0, 2),
-                new AddResourceEffect(1), new DamageEffect(10));
+                new AddResourceEffect(1, true, false), new DamageEffect(10, false, false));
     }
 }

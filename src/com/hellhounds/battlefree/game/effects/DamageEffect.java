@@ -4,9 +4,9 @@ import com.hellhounds.battlefree.game.units.Unit;
 
 public class DamageEffect extends Effect{
 
-    public DamageEffect(int value)
+    public DamageEffect(int value, boolean friendly, boolean multiple)
     {
-        super(EffectType.DAMAGE, value);
+        super(EffectType.DAMAGE, value, friendly, multiple);
     }
     
     @Override

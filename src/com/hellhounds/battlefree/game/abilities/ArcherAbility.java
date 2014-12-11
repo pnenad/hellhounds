@@ -8,8 +8,8 @@ public class ArcherAbility extends Ability{
 	public ArcherAbility()
 	{
 		super("Double Shot", new Payment(1, 1, 0, 0), 
-              new DamageEffect(20),
-              new DamageEffect(20));
+              new DamageEffect(20, false, false),
+              new DamageEffect(20, false, false));
 	}
 	
 }

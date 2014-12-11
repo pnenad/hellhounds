@@ -4,9 +4,9 @@ import com.hellhounds.battlefree.game.units.Unit;
 
 public class PierceEffect extends Effect{
 
-    public PierceEffect(int value)
+    public PierceEffect(int value, boolean friendly, boolean multiple)
     {
-        super(EffectType.PIERCE, value);
+        super(EffectType.PIERCE, value, friendly, multiple);
     }
 
     @Override

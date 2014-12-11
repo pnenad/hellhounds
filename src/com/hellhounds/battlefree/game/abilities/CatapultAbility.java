@@ -10,8 +10,8 @@ public class CatapultAbility extends Ability{
 	public CatapultAbility()
 	{
 		super("Stone Rain", new Payment(1, 1, 0, 1),
-              new DamageEffect(30),
-              new DamageEffect(30));
+              new DamageEffect(25, false, false),
+              new DamageEffect(25, false, false));
 	}
 	
 }
