@@ -1,4 +1,4 @@
-package com.hellhounds.battlefree.game;
+package com.hellhounds.battlefree.server;
 
 /**
  * Created by furai on 09.12.14.
