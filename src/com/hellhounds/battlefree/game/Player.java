@@ -21,9 +21,6 @@ public class Player{
         this.unit2 = unit2;
         this.unit3 = unit3;
         unitMap = new HashMap<>();
-        unitMap.put(unit1.getName(), unit1);
-        unitMap.put(unit2.getName(), unit2);
-        unitMap.put(unit3.getName(), unit3);
         initUnits();
         generateResource();
     }
@@ -31,8 +28,10 @@ public class Player{
     private void initUnits()
     {
         Unit[] units = getUnits();
-        for(Unit unit : units)
+        for(Unit unit : units) {
             unit.setOwner(this);
+            unitMap.put(unit.getName(), unit);
+        }
     }
 
     public void generateResource()
