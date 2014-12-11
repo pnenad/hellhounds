@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Hellhounds by pnenad</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Hellhounds</h1>
+        <h2>Semester project for group Hellhounds</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/pnenad/hellhounds/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/pnenad/hellhounds/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/pnenad/hellhounds" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h3>
+<p style="text-align:center;background:black;"><img src="images/logo.png"></img></p>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Game rules:</h3>
+<p>A rundown of the game rules are as follows:<p/>
+<p>GAME START</p>
+<p>To start a game, a player chooses which units he/she will be using. A player may choose three different units, out of a selection of (currently) fourteen different units. When choosing their units, players do not have any information about what units their opponent may have chosen.</p>
+<p>Each unit has an ability, and the effects of these abilities vary. Each ability also has an activation cost, represented in three different resources, Gold, Steel and Crystal. When choosing which three units they will be using, it may be smart for players to choose a set of units that may use an even spread of different resources.<p>
+<p>Each unit also starts with 100 health points. When a unit is reduced to 0 health points (HP) or less, that unit is considered dead.</p>
+<p>When both players have chosen their units, the game starts. Each player will get one resource of a random type for each of their units still alive. In the first round of the game, that always means getting three random resources.</p>
+<p>Now that both players have chosen their units and gotten their resources, both players can see which units their opponent has chosen, and the first turn begins.</p>
+<p>TURNS</p>
+<p>During a turn, each player may choose to activate one or more of their units abilities. One specific unit may only be activated once in a turn. A unit may only be activated if the player has enough resources to pay the activation cost.</p>
+<p>When an ability is activated, the player is prompted to choose the target(s) for the ability. When a player has done all the desired actions for the turn, they click to end the turn (and send the turn information to the server).</p>
+<p>Players can resolve their turns simultaneously, and the server will do the combat calculation when it has recieved the turn information from both players.</p>
+<p>COMBAT CALCULATION</p>
+<p>The type of effects that are to be calculated is important to the combat calculation. The different effects are listed out here, in the order they should be calculated:</p>
+<p>Armor - The armor value of an effect grants its target(s) a reduction to damage in this round of combat. It's important to add in armor effects before damage effects.</p>
+<p>Crush - The crush value of an effect deals damage to the target(s) armor value first (able to reduce it to 0), then deals any remaining crush value as damage to the target(s) health. It's important to deal crush damage before regular damage.</p>
+<p>Damage - The damage value of an effect deals damage to the target(s) health, reduced by the target(s) armor value.</p>
+<p>Pierce - The pierce value of an effect deals damage to the target(s) health, ignoring armor value.</p>
+<p>Heal - The heal value of an effect bolsters the target(s) health. We have decided to calculate healing after damage effects, making it effective for mending damage in previous rounds *and* damage in this round. Healing *could* be set to happen before damage effects, it would then only be effective to heal a unit that got damage the round before.</p>
+<p>Add - The add value of an effect adds a random resource to the owner of the source unit.</p>
+<p>Steal - The steal value of an effect steals a random resource from the owner of the targeted unit, and gives the resource to the owner of the source unit.</p>
+<p>After these combat steps, any units with health at value 0 or less are declared dead.</p>
+<p>GAME END</p>
+<p>The game ends when all units of one or both players are dead. The game can end in a win for one player, or a draw (if both players lost all units in the same combat). Players will keep taking turns until the game ends.</p>
+
+<h3>To see our progress, you can download, compile and run our repository using git:
+<pre><code>
+$git clone https://github.com/pnenad/hellhounds.git
+$make
+$./run
+</code>
+</pre>
+<!--
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+
+<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:
+io</p>
+<pre><code>$ cd your_repo_root/repo_name
+$ git fetch origin
+$ git checkout gh-pages
+</code></pre>
+-->
+      </section>
+    </div>
+
+    
+  </body>
+</html>
