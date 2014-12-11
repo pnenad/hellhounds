@@ -1,4 +1,0 @@
-#! /bin/bash
-java -cp bin:lib/gson-2.3.jar com.hellhounds.battlefree.server.Server &
-java -cp bin:lib/gson-2.3.jar com.hellhounds.battlefree.server.ClientTest
-
