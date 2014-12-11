@@ -4,3 +4,7 @@ serv
 *.iml
 /.idea
 database.properties
+Android/app/build
+*.gradle
+*.pro
+*.properties

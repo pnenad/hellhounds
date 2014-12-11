@@ -1,0 +1,207 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.example.uia.battlefree.ChooseUnits"
+    android:background="@drawable/scroll">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/playButton"
+        android:id="@+id/lookForOpponent"
+        android:layout_centerInParent="true"
+        android:background="@drawable/buttonlong_brown" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/woodenBoard">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:background="@drawable/woodtexture2"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/unitSelection"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:fillViewport="false"
+        android:layout_marginBottom="5dp"
+        android:visibility="visible"
+        android:layout_marginRight="5dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/choose_unit_linear_layout">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseOrc"
+                android:background="@drawable/orc"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseSkeleton"
+                android:background="@drawable/skeletons"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseSupplyCart"
+                android:background="@drawable/supplycart"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseThief"
+                android:background="@drawable/thief"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseVampire"
+                android:background="@drawable/vampire"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseDefender"
+                android:background="@drawable/defender"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseDwarf"
+                android:background="@drawable/dwarf"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseGolem"
+                android:focusable="false"
+                android:background="@drawable/golem"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseMushroom"
+                android:background="@drawable/mushrooms"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseArcher"
+                android:background="@drawable/archer"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseBarbarian"
+                android:background="@drawable/barbarian"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseCatapult"
+                android:background="@drawable/catapult"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseFootsoldier"
+                android:background="@drawable/footsoldiers"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chooseMage"
+                android:background="@drawable/mage"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="false"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/pickedUnits"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chosen_unit_1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chosen_unit_2" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chosen_unit_3" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/fragment_container"
+        android:layout_above="@+id/woodenBoard"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginLeft="45dp"
+        android:layout_centerHorizontal="true">
+
+    </FrameLayout>
+
+</RelativeLayout>
