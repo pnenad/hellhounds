@@ -5,18 +5,18 @@ package com.hellhounds.battlefree.game;
  */
 public class GameDummy extends Thread {
 
-Long id;
-private boolean running;
+Integer id;
+private volatile boolean running;
 
-public GameDummy(Long id){
-       	this.id = id;
+public GameDummy(Integer id){
+	this.id = id;
 	running = true;
 }
 
 public static void main(String[] argv){
 }
 
-public void pauseThread(){
+public void pauseThread() throws InterruptedException {
 	this.running = false;
 }
 
@@ -30,15 +30,11 @@ private boolean isRunning(){
 
 @Override
 public void run(){
+
 	System.out.println("This is thread nr: " + id);
-	try{ Thread.sleep(3000); } catch (Exception e) { e.printStackTrace();}
-	while(this.isRunning()){
-		try{
-			Thread.sleep(5000);
-			System.out.println("...still running...");
-		}catch(Exception e){
-			e.printStackTrace();
+	while(running){
+			System.out.println("Thread nr. " + id + " is running");
 		}
 	}
 }
-}
+
