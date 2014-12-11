@@ -35,10 +35,12 @@ private HashMap<Integer, GameDummy> threads;
 			String command = messageArray[1];
 			System.out.println("Received thread id: " + id);
 			System.out.println("Received command  : " + command);
+			//if command is start create a new thread and assign it id 1
 			if(command.equals("start")){
 				System.out.println("Thread will spawn here!");
-				server.createThread("Game Thread");
+				server.createThread("Game Thread", id);
 			}
+			//if command is pause find and pause the thread
 			else if(command.equals("pause")){
 				if(id <= server.getThreads().size() && id > 0){
 					server.getThreads().get(id).pauseThread(); //1;pause
@@ -46,6 +48,7 @@ private HashMap<Integer, GameDummy> threads;
 					System.out.println("No such thread.");
 				}
 			}
+			//if command is resume find and resume the thread
 			else if(command.equals("resume")){
 				if(id <= server.getThreads().size() && id > 0){
 					if(server.getThreads().get(id).isAlive()){
@@ -80,9 +83,13 @@ private HashMap<Integer, GameDummy> threads;
 		t.run();
 	}
 	*/
-
-	private void createThread(String s) throws InterruptedException{
-		int l = 1;
+	
+	/**
+	* Method for spawning and tracking threads running on server
+	* @param s Used for thread name
+	* @param i Used for thread id
+	* */
+	private void createThread(String s, int i) throws InterruptedException{
 		GameDummy t = new GameDummy(l);
 		threads.put(l, t);
 		System.out.println(threads.get(l).getId());
