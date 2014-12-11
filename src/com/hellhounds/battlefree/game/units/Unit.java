@@ -22,6 +22,16 @@ public class Unit{
         this.maxHealth  = health;
         this.armor = 0;
     }
+
+    public void addPrimaryTarget(Unit target)
+    {
+        ability.getPrimary().addTarget(target);
+    }
+
+    public void addSecondaryTarget(Unit target)
+    {
+        ability.getSecondary().addTarget(target);
+    }
     
     @Override
     public String toString()

@@ -1,4 +1,4 @@
-package com.hellhounds.battlefree.game.abilities.effects;
+package com.hellhounds.battlefree.game.effects;
 
 import com.hellhounds.battlefree.game.units.Unit;
 
@@ -44,5 +44,5 @@ public abstract class Effect{
 
     /* ------------ ABSTRACT --------------------*/
 
-    public abstract void applyEffect(Unit source);
+    public abstract void applyEffect(com.hellhounds.battlefree.game.units.Unit source);
 }

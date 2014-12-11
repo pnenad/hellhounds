@@ -1,18 +1,17 @@
 package com.hellhounds.battlefree.game;
 
 import com.hellhounds.battlefree.game.units.Unit;
+
+import java.util.HashMap;
 import java.util.Random;
 
 public class Player{
 
     private String username;
     private boolean loss;
-    private Unit unit1;
-    private Unit unit2;
-    private Unit unit3;
-    private int gold;
-    private int steel;
-    private int crystal;
+    private Unit unit1, unit2, unit3;
+    private int gold, steel, crystal;
+    private HashMap<String, Unit> unitMap;
 
     public Player(String username, Unit unit1, Unit unit2, Unit unit3)
     {
@@ -21,6 +20,7 @@ public class Player{
         this.unit1 = unit1;
         this.unit2 = unit2;
         this.unit3 = unit3;
+        unitMap = new HashMap<>();
         initUnits();
         generateResource();
     }
@@ -28,8 +28,10 @@ public class Player{
     private void initUnits()
     {
         Unit[] units = getUnits();
-        for(Unit unit : units)
+        for(Unit unit : units) {
             unit.setOwner(this);
+            unitMap.put(unit.getName(), unit);
+        }
     }
 
     public void generateResource()
@@ -151,6 +153,18 @@ public class Player{
     {
         Unit[] units = {unit1, unit2, unit3};
         return units;
+    }
+
+    public boolean isLoss() {
+        return loss;
+    }
+
+    public HashMap<String, Unit> getUnitMap() {
+        return unitMap;
+    }
+
+    public void setUnitMap(HashMap<String, Unit> unitMap) {
+        this.unitMap = unitMap;
     }
 
     public String getUsername() { return username; }

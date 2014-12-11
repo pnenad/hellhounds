@@ -1,6 +1,6 @@
 package com.hellhounds.battlefree.game.abilities;
 
-import com.hellhounds.battlefree.game.abilities.effects.Effect;
+import com.hellhounds.battlefree.game.effects.Effect;
 
 public class Ability{
 

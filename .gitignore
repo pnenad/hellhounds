@@ -1,4 +1,6 @@
 *.class
+serv
 *.swp
 *.iml
 /.idea
+database.properties

@@ -46,7 +46,8 @@ public ClientTest(){
 				}
 			}
 			String messageIn;
-			Socket socket = new Socket("localhost", 8888);
+			//Server running on Static IP (datalab)
+			Socket socket = new Socket("158.36.166.82", 8888);
 			DataOutputStream outbound = new DataOutputStream(socket.getOutputStream());
 			BufferedReader incoming = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			outbound.writeBytes("MESSAGE" + '\n');
