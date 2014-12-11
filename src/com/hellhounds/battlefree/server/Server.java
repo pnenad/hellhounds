@@ -10,7 +10,7 @@ import com.hellhounds.battlefree.game.GameDummy;
 
 public class Server{
 
-private HashMap<Long, Thread> threads;
+private HashMap<Long, GameDummy> threads;
 
 	public Server(){
 		threads = new HashMap<>();
@@ -29,7 +29,7 @@ private HashMap<Long, Thread> threads;
 			DataOutputStream outbound = new DataOutputStream(conn.getOutputStream());
 			message = incoming.readLine();
 			System.out.println("Received: " + message);
-			if(message.equals("Nenad")){
+			if(message.equals("start")){
 				System.out.println("Thread will spawn here!");
 				try {
 					server.createThread("Nenad");
@@ -37,6 +37,13 @@ private HashMap<Long, Thread> threads;
 					e.printStackTrace();
 				}
 			}
+			else if(message.equals("pause")){
+				server.getThreads().get(1).pauseThread();
+			}
+			else if(message.equals("resume")){
+				server.getThreads().get(1).resumeThread();
+			}	
+				
 
 			System.out.println("Sending reply: " + message);
 			outbound.writeBytes("Reply for message " + message + '\n');
@@ -52,29 +59,36 @@ private HashMap<Long, Thread> threads;
 	* @param p2 Player object for player 2
 	* @param id Id for game object that is used as key for HashMap
 	* */
+	/**
 	private void createClientThread(Player p1, Player p2, Long id){
-		Thread t = new Thread(new Game(p1, p2, id));
+		Thread t = new Game(p1, p2, id));
 		threads.put(id, t);
 		System.out.println("Thread started: " + threads.get(id).getState());
 		t.run();
 	}
+	*/
 
 	private void createThread(String s) throws InterruptedException{
 		long l = 1;
-		while(l<5){
-			Thread t = new Thread(new GameDummy(l));
-			threads.put(l, t);
-			System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
-			threads.get(l).start();
-			System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
-			threads.get(l).run();
-			System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
-			l=l+1L;
+		GameDummy t = new GameDummy(l);
+		threads.put(l, t);
+		System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
+		threads.get(l).start();
+		System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
+		threads.get(l).run();
+		System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
+		//threads.get(l).pauseThread();
+		//System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
+		//threads.get(l).resumeThread();
+		//System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
 		}
-	}
 
 	private void readMessages(){
 	
+	}
+
+	private HashMap<Long, GameDummy> getThreads(){
+		return this.threads;
 	}
 
 }
