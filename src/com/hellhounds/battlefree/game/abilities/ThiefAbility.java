@@ -8,6 +8,6 @@ public class ThiefAbility extends Ability{
     public ThiefAbility()
     {
         super("Mug", new Payment(1, 0, 1, 0),
-              new StealResourceEffect(1), new DamageEffect(15));
+              new StealResourceEffect(1, false, false), new DamageEffect(15, false, false));
     }
 }

@@ -4,9 +4,9 @@ import com.hellhounds.battlefree.game.units.Unit;
 
 public class HealEffect extends Effect{
 
-    public HealEffect(int value)
+    public HealEffect(int value, boolean friendly, boolean multiple)
     {
-        super(EffectType.HEAL, value);
+        super(EffectType.HEAL, value, friendly, multiple);
     }
 
     @Override

@@ -4,9 +4,9 @@ import com.hellhounds.battlefree.game.units.Unit;
 
 public class AddResourceEffect extends Effect{
 
-    public AddResourceEffect(int value)
+    public AddResourceEffect(int value, boolean friendly, boolean multiple)
     {
-        super(EffectType.ADD, value);
+        super(EffectType.ADD, value, friendly, multiple);
     }
 
     @Override

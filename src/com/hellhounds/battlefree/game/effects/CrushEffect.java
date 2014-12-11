@@ -4,9 +4,9 @@ import com.hellhounds.battlefree.game.units.Unit;
 
 public class CrushEffect extends Effect {
 
-    public CrushEffect(int value)
+    public CrushEffect(int value, boolean friendly, boolean multiple)
     {
-        super(EffectType.CRUSH, value);
+        super(EffectType.CRUSH, value, friendly, multiple);
     }
 
     @Override

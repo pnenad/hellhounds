@@ -6,6 +6,8 @@ public class SkeletonAbility extends Ability{
 
     public SkeletonAbility()
     {
-        super("Bone Dagger", new Payment(0, 0, 1, 1), new PierceEffect(10), new PierceEffect(10));
+        super("Bone Dagger", new Payment(0, 0, 1, 1),
+                new PierceEffect(10, false, false),
+                new PierceEffect(10, false, false));
     }
 }

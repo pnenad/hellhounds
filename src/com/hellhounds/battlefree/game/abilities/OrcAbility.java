@@ -6,6 +6,7 @@ public class OrcAbility extends Ability{
 
     public OrcAbility()
     {
-        super("Double Crush", new Payment(1, 1, 0, 0), new CrushEffect(15), new CrushEffect(15));
+        super("Double Crush", new Payment(1, 1, 0, 0),
+                new CrushEffect(12, false, false), new CrushEffect(12, false, false));
     }
 }

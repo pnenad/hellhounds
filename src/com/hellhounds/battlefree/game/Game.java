@@ -3,7 +3,6 @@ package com.hellhounds.battlefree.game;
 import com.hellhounds.battlefree.game.effects.EffectType;
 import com.hellhounds.battlefree.game.units.Unit;
 import com.hellhounds.battlefree.messaging.JsonUnit;
-import com.hellhounds.battlefree.messaging.Message;
 import com.hellhounds.battlefree.messaging.Target;
 import com.hellhounds.battlefree.messaging.TargetsMessage;
 
@@ -23,6 +22,116 @@ public class Game{
         this.gameID = gameID;
         this.roundNr = 0;
         this.winStatus = 0;
+    }
+
+    public void cleanup()
+    {
+        Player[] players = {player1, player2};
+
+        for(Player player : players)
+        {
+            Unit[] units = player.getUnits();
+            armorCleanup(units);
+            healthCleanup(units);
+            targetsCleanup(units);
+            player.setLoss(checkForLoser(units));
+        }
+
+        endstep(player1, player2);
+
+    }
+        
+    private void endstep(Player player1, Player player2)
+    {
+        boolean player1Loss = player1.getLoss();
+        boolean player2Loss = player2.getLoss();
+
+        if(!player1Loss && player2Loss) this.winStatus = 1;
+
+        else if(player1Loss && !player2Loss) this.winStatus = 2;
+
+        else if(player1Loss && player2Loss) this.winStatus = 3;
+
+        else
+        {
+            roundNr++;
+            System.out.println(toString());
+            player1.generateResource();
+            player2.generateResource();
+        }
+    }
+
+    private void armorCleanup(Unit[] units)
+    {
+        for(Unit unit : units)
+        {
+            unit.setArmor(0);
+        }
+    }
+
+    private void healthCleanup(Unit[] units)
+    {
+        for(Unit unit : units)
+        {
+            int currentHealth = unit.getCurrentHealth();
+
+            if(unit.getMaxHealth() < currentHealth)
+            {
+                unit.setCurrentHealth(unit.getMaxHealth());
+            }
+
+            else if(currentHealth <= 0)
+            {
+                unit.setAlive(false);
+            }
+        }
+    }
+
+    private void targetsCleanup(Unit[] units)
+    {
+        for(Unit unit :units)
+        {
+            unit.getAbility().getPrimary().removeTargets();
+            unit.getAbility().getSecondary().removeTargets();
+        }
+    }
+
+    private boolean checkForLoser(Unit[] units)
+    {
+        for(Unit unit : units)
+        {
+            if(!unit.isAlive())
+                continue;
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public void resolveEffect(EffectType type)
+    {
+        Player[] players = {player1, player2};
+
+        for(Player player : players)
+        {
+            Unit[] units = player.getUnits();
+
+            for(Unit unit : units)
+            {
+                if(unit.getAbility().isActivated())
+                {
+                    EffectType primary = unit.getAbility().getPrimary().getType();
+                    EffectType secondary = unit.getAbility().getSecondary().getType();
+
+                    if(primary.equals(type))
+                        unit.getAbility().getPrimary().applyEffect(unit);
+
+                    if(secondary.equals(type))
+                        unit.getAbility().getSecondary().applyEffect(unit);
+                }
+            }
+        }
     }
 
     /**
@@ -109,106 +218,6 @@ public class Game{
                 else
                 {
                     unitSource.getAbility().getSecondary().addTarget(opponent.getUnitMap().get(targetUnitString));
-                }
-            }
-        }
-    }
-
-    public void cleanup()
-    {
-        Player[] players = {player1, player2};
-
-        for(Player player : players)
-        {
-            Unit[] units = player.getUnits();
-            armorCleanup(player, units);
-            healthCleanup(player, units);
-            player.setLoss(checkForLoser(player, units));
-        }
-
-        endstep(player1, player2);
-
-    }
-        
-    private void endstep(Player player1, Player player2)
-    {
-        boolean player1Loss = player1.getLoss();
-        boolean player2Loss = player2.getLoss();
-
-        if(!player1Loss && player2Loss) this.winStatus = 1;
-
-        else if(player1Loss && !player2Loss) this.winStatus = 2;
-
-        else if(player1Loss && player2Loss) this.winStatus = 3;
-
-        else
-        {
-            roundNr++;
-            System.out.println(toString());
-            player1.generateResource();
-            player2.generateResource();
-        }
-    }
-
-    private void armorCleanup(Player player, Unit[] units)
-    {
-        for(Unit unit : units)
-        {
-            unit.setArmor(0);
-        }
-    }
-
-    private void healthCleanup(Player player, Unit[] units)
-    {
-        for(Unit unit : units)
-        {
-            int currentHealth = unit.getCurrentHealth();
-
-            if(unit.getMaxHealth() < currentHealth)
-            {
-                unit.setCurrentHealth(unit.getMaxHealth());
-            }
-
-            else if(currentHealth <= 0)
-            {
-                unit.setAlive(false);
-            }
-        }
-    }
-
-    private boolean checkForLoser(Player player, Unit[] units)
-    {
-        for(Unit unit : units)
-        {
-            if(!unit.isAlive())
-                continue;
-
-            return false;
-        }
-
-        return true;
-    }
-
-    public void resolveEffect(EffectType type)
-    {
-        Player[] players = {player1, player2};
-
-        for(Player player : players)
-        {
-            Unit[] units = player.getUnits();
-
-            for(Unit unit : units)
-            {
-                if(unit.getAbility().isActivated())
-                {
-                    EffectType primary = unit.getAbility().getPrimary().getType();
-                    EffectType secondary = unit.getAbility().getSecondary().getType();
-
-                    if(primary.equals(type))
-                        unit.getAbility().getPrimary().applyEffect(unit);
-
-                    if(secondary.equals(type))
-                        unit.getAbility().getSecondary().applyEffect(unit);
                 }
             }
         }

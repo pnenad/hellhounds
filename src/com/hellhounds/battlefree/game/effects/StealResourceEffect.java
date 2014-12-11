@@ -8,9 +8,9 @@ public class StealResourceEffect extends Effect{
 
     private ArrayList<String> resourceList;
     
-    public StealResourceEffect(int value)
+    public StealResourceEffect(int value, boolean friendly, boolean multiple)
     {
-        super(EffectType.STEAL, value);
+        super(EffectType.STEAL, value, friendly, multiple);
         resourceList = new ArrayList<String>();
         resourceList.add("STEEL");
         resourceList.add("GOLD");
