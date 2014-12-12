@@ -18,6 +18,10 @@ http://pnenad.github.io/hellhounds
 Project type:
 Opensource school project
 
+License:
+This project uses theApache License, Version 2.0 (the "License")
+http://www.apache.org/licenses/LICENSE-2.0
+
 Description:
 We will make a tactical turn based 1vs1 game.
 For information about the project, game rules, units overview,
@@ -38,7 +42,19 @@ in the different branches and areas of the application.
 
 ----------------------------------------------------------------
 
-Game engine tests:
+Game engine test:
+
+Compile and run GameInit. Doing this will print to screen a
+simple sample game. Two players are generated, and they are
+given three units each. Resources are generated each round
+to the players, based on how many units the player has alive.
+
+The units battle against one another, using the same targets
+for each round, and not spending any resources doing so (
+because payment functionality is not yet added).
+
+You may edit this class yourself to try out different unit
+and target combination, or change the name of the players.
 
 ----------------------------------------------------------------
 
