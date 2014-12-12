@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Open Warfare</string>
+    <string name="action_settings">Settings</string>
+    <string name="playButton">Play</string>
+    <string name="title_activity_choose_units">ChooseUnits</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="chosen_units">Chosen Units</string>
+    <string name="title_activity_unit_description">UnitDescription</string>
+    <string name="title_activity_main_activity2">MainActivity2</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="addUnitButton">Add Unit</string>
+    <string name="title_activity_game">Game</string>
+    <string name="title_activity_searching_for_opponent">SearchingForOpponent</string>
+    <string name="start">Start</string>
+
+    <string name="name">Name:</string>
+    <string name="abilityName">Ability:</string>
+    <string name="abilityCost">Ability Cost:</string>
+
+    <string name="useAbility">Use Ability</string>
+
+    <string name="unit_name_orc">Orc</string>
+    <string name="unit_ability_name_orc">Heavy Strike</string>
+    <string name="unit_ability_cost_orc">3 steel</string>
+    <string name="unit_description_orc"></string>
+
+    <string name="unit_name_skeleton">Skeleton</string>
+    <string name="unit_ability_name_skeleton">Boomerang Bone</string>
+    <string name="unit_ability_cost_skeleton">1 Crystal</string>
+    <string name="unit_description_skeleton"></string>
+
+    <string name="unit_name_thief">Thief</string>
+    <string name="unit_ability_name_thief">Steal</string>
+    <string name="unit_ability_cost_thief">2 Gold</string>
+    <string name="unit_description_thief"></string>
+
+    <string name="unit_name_supplyCart">Supply Cart</string>
+    <string name="unit_ability_name_supplyCart">Heal</string>
+    <string name="unit_ability_cost_supplyCart">1 Gold</string>
+    <string name="unit_description_supplyCart"></string>
+
+    <string name="unit_name_vampire">Vampire</string>
+    <string name="unit_ability_name_vampire">Life Steal</string>
+    <string name="unit_ability_cost_vampire"> 4 Crystal</string>
+    <string name="unit_description_vampire"></string>
+
+    <string name="unit_name_defender">Defender</string>
+    <string name="unit_ability_name_defender">Shield Bash</string>
+    <string name="unit_ability_cost_defender">1 steel, 1 any</string>
+    <string name="unit_description_defender"></string>
+
+    <string name="unit_name_dwarf">Dwarf</string>
+    <string name="unit_ability_name_dwarf">Steel wall</string>
+    <string name="unit_ability_cost_dwarf">1 Gold, 1 Steel</string>
+    <string name="unit_description_dwarf"></string>
+
+    <string name="unit_name_golem">Golem</string>
+    <string name="unit_ability_name_golem">Golem Smash</string>
+    <string name="unit_ability_cost_golem">1 Gold, 1 Crystal</string>
+    <string name="unit_description_golem"></string>
+
+    <string name="unit_name_mushroom">Mushroom</string>
+    <string name="unit_ability_name_mushroom">Spore Cloud</string>
+    <string name="unit_ability_cost_mushroom">1 Crystal</string>
+    <string name="unit_description_mushroom"></string>
+
+    <string name="unit_name_archer">Archer</string>
+    <string name="unit_ability_name_archer">Double Shot</string>
+    <string name="unit_ability_cost_archer">1 Gold, 1 Steel</string>
+    <string name="unit_description_archer"></string>
+
+    <string name="unit_name_barbarian">Barbarian</string>
+    <string name="unit_ability_name_barbarian">Whirlwind</string>
+    <string name="unit_ability_cost_barbarian">2 Gold</string>
+    <string name="unit_description_barbarian"></string>
+
+    <string name="unit_name_catapult">Catapult</string>
+    <string name="unit_ability_name_catapult">Stone Rain</string>
+    <string name="unit_ability_cost_catapult">1 Gold, 1 Steel, 1 Any</string>
+    <string name="unit_description_catapult"></string>
+
+    <string name="unit_name_footsoldier">Footsoldier</string>
+    <string name="unit_ability_name_footsoldier">Rank and File</string>
+    <string name="unit_ability_cost_footsoldier">1 Any</string>
+    <string name="unit_description_footsoldier"></string>
+
+    <string name="unit_name_mage">Mage</string>
+    <string name="unit_ability_name_mage">Yin &amp; Yang</string>
+    <string name="unit_ability_cost_mage">2 Crystal, 1 Any</string>
+    <string name="unit_description_mage"></string>
+
+    <string name="unit1">unit1</string>
+    <string name="unit2">unit2</string>
+    <string name="unit3">unit3</string>
+
+</resources>
