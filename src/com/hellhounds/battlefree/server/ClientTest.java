@@ -55,9 +55,9 @@ public ClientTest(){
 			}
 			String messageIn;
 			//uncomment next line to run on Linux lab pc
-			//Socket socket = new Socket("158.36.166.82", 8888);
+			Socket socket = new Socket("158.36.166.82", 8888);
 			//uncomment next line to run on localhost
-			Socket socket = new Socket(InetAddress.getLocalHost(), 8888);
+			//Socket socket = new Socket(InetAddress.getLocalHost(), 8888);
 			DataOutputStream outbound = new DataOutputStream(socket.getOutputStream());
 			BufferedReader incoming = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			outbound.writeBytes(test.username + '\n');

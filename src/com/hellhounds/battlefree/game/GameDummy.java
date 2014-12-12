@@ -13,28 +13,32 @@ public GameDummy(Integer id){
 	running = true;
 }
 
-public static void main(String[] argv){
-}
+public static void main(String[] argv){ }
 
-public void pauseThread() throws InterruptedException {
-	this.running = false;
-}
+public void pauseThread() throws InterruptedException {	this.running = false; }
 
-public void resumeThread(){
-	this.running = true;
-}
+public synchronized void resumeThread(){ this.running = true; notify(); }
 
-private boolean isRunning(){
-	return this.running;
-}
+private boolean isRunning(){ return this.running; }
+
+public int getSerialNo(){ return this.id;}
 
 @Override
 public void run(){
 
 	System.out.println("This is thread nr: " + id);
 	while(running){
+		try{
 			System.out.println("Thread nr. " + id + " is running");
-		}
+			Thread.sleep(3000);
+			synchronized(this) {
+            			while(!running) {
+               				wait();
+            			}
+			}
+		} catch (InterruptedException e) {
+         		System.out.println("Thread " + id + " interrupted.");
+     		}
 	}
 }
-
+}

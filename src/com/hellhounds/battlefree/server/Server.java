@@ -38,29 +38,52 @@ private HashMap<Integer, GameDummy> threads;
 			//if command is start create a new thread and assign it id 1
 			if(command.equals("start")){
 				System.out.println("Thread will spawn here!");
-				server.createThread("Game Thread", id);
+				server.createThread(id);
+				System.out.println("This thread is: " + server.getThreads().get(id).getState());
 			}
 			//if command is pause find and pause the thread
 			else if(command.equals("pause")){
 				if(id <= server.getThreads().size() && id > 0){
-					server.getThreads().get(id).pauseThread(); //1;pause
+					server.getThreads().get(id).pauseThread();
+					System.out.println("This thread is: " + server.getThreads().get(id).getState());
 				}else{
 					System.out.println("No such thread.");
 				}
 			}
+			//iif command is stop find the thread and terminate it
+			else if(command.equals("stop")){
+                                if(id <= server.getThreads().size() && id > 0){
+                                        if(server.getThreads().get(id).isAlive()){
+						server.getThreads().get(id).stop();						
+						System.out.println("This thread is: " + server.getThreads().get(id).getState());
+					} else {
+						System.out.println("This thread cannot be stopped");
+					}						
+                                }else{
+                                        System.out.println("No such thread.");
+                                }
+                        }
 			//if command is resume find and resume the thread
 			else if(command.equals("resume")){
 				if(id <= server.getThreads().size() && id > 0){
 					if(server.getThreads().get(id).isAlive()){
-						System.out.println("This thread can be resumed. Status: " + server.getThreads().get(id).getState());
-					}
-					else{
+						server.getThreads().get(id).resumeThread();
+						System.out.println("Thread status: " + server.getThreads().get(id).getState());
+					}else{
 						System.out.println("This thread cannot be resumed.");
 					}
 				}else{
 					System.out.println("No such thread.");
 				}
 			}
+			//if command is quit and id is 0 then stop server
+			else if(id==0 && command.equals("quit")){
+				server.stopServer();
+			}
+			else {
+				System.out.println("Unknown command");
+			}	
+			
 			System.out.println("Sending reply: " + message);
 			outbound.writeBytes("Reply for message " + message + '\n');
 			conn.close();
@@ -89,21 +112,24 @@ private HashMap<Integer, GameDummy> threads;
 	* @param s Used for thread name
 	* @param i Used for thread id
 	* */
-	private void createThread(String s, int i) throws InterruptedException{
-		GameDummy t = new GameDummy(l);
-		threads.put(l, t);
-		System.out.println(threads.get(l).getId());
-		System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
+	private void createThread(int i) throws InterruptedException{
+		GameDummy t = new GameDummy(i);
+		threads.put(i, t);
+		System.out.println(threads.get(i).getId());
+		System.out.println("Thread nr." + i + " status: " + threads.get(i).getState());
 		t.start();
-		//System.out.println("Thread nr." + l + " status: " + threads.get(l).getState());
-		}
-
-	private void readMessages(){
-	
 	}
-
+	
+	/**Method that returns a map with all the running threads on server
+	* @return HashMap with all the running threads */
 	private HashMap<Integer, GameDummy> getThreads(){
 		return this.threads;
+	}
+	
+	/**Method that stops the server*/
+	private void stopServer(){
+		System.out.println("Stoping server");
+		System.exit(0);
 	}
 
 }
