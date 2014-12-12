@@ -42,6 +42,9 @@ public class GuiTest {
     private JLabel unit2;
     private JLabel unit3;
     private Box leftBox;
+    private Box rightBox;
+    private JPanel opponentUnits;
+    private Box opponentBox;
 
     public GuiTest(){
         makeGUI();
@@ -68,8 +71,8 @@ public class GuiTest {
 
         //create labels
         leftLabel = new JLabel("Please 3 units:");
-        centerLabel = new JLabel("Center Panel\n");
-        rightLabel = new JLabel("Right Panel\n");
+        centerLabel = new JLabel("Selected Units\n");
+        rightLabel = new JLabel("Play and Log:\n");
 
         //create left container
         leftPanel = new JPanel();
@@ -94,10 +97,34 @@ public class GuiTest {
         unit2 = new JLabel("", JLabel.LEFT);
         unit3 = new JLabel("", JLabel.LEFT);
 
-        //create vertical box
+        //create panel for opponents chosen units
+        opponentUnits = new JPanel();
+        opponentUnits.setLayout(new FlowLayout());
+
+        //crete vertical box for chose units
+        opponentBox = new Box(1);
+        opponentBox.createVerticalBox();
+        opponentBox.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.gray));
+        opponentBox.add(new JLabel("Opponent's units:"));
+        opponentBox.add(new JLabel("Unit 1"));
+        opponentBox.add(new JLabel("Unit 2"));
+        opponentBox.add(new JLabel("Unit 3"));
+        opponentUnits.add(opponentBox);
+
+        //create vertical box for units container
         leftBox = new Box(1);
         leftBox.createVerticalBox();
         leftBox.add(leftLabel);
+
+        //create vertical box for play container
+        rightBox = new Box(1);
+        rightBox.createVerticalBox();
+        rightBox.setBorder(BorderFactory.createMatteBorder(0,0,1,0,Color.gray));
+        rightBox.add(rightLabel);
+        rightBox.add(new JButton("Play"));
+        rightBox.add(opponentUnits);
+        rightPanel.add(rightBox);
+        rightPanel.add(opponentBox);
 
         //add components to main frame and make it visible
         mainFrame.add(leftPanel);
@@ -111,7 +138,7 @@ public class GuiTest {
         for(final Unit u : getAllUnits()){
             final JRadioButton button = new JRadioButton(u.getName());
             button.setText(u.getName());
-            String source = "../../../../"+u.getName()+".gif";
+            String source = "../../../../"+u.getName()+".png";
             button.setToolTipText("<html><img src=\"" + GuiTest.class.getResource(source) + "\" />" +
                     "<br/>" +
                     "<p>This is the " +
@@ -119,8 +146,13 @@ public class GuiTest {
                     u.getAbility().getName() +
                     "<br/>Primary effect: " +
                     u.getAbility().getPrimary().getType() +
-                    "<br/>Value : " +
-                    u.getAbility().getPrimary().getNumericalValue());
+                    "<br/>Value: " +
+                    u.getAbility().getPrimary().getNumericalValue() +
+                    "<br/>Secondary effect: " +
+                    u.getAbility().getSecondary().getType() +
+                    "<br/>Value: " +
+                    u.getAbility().getSecondary().getNumericalValue());
+
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
@@ -139,7 +171,7 @@ public class GuiTest {
                 centerPanel.add(l);
             }
         }
-        rightPanel.add(new JButton("Play"));
+
         leftPanel.add(leftBox);
         mainFrame.add(leftPanel);
         mainFrame.add(centerPanel);
