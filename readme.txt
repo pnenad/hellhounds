@@ -105,6 +105,8 @@ Run and test Client and Server:
 
 This was the demonstration of client - server communication and how server multithreading is set up.
 
+----------------------------------------------------------------
+
 SQL:
 
 1. Add a file named "database.properties" to mysql folder
@@ -114,7 +116,10 @@ SQL:
     db.user = 'the username for your database'
     db.passwd = 'your database user password'
 
-Run GameInit:
+----------------------------------------------------------------
 
-make game
-java -cp bin com.hellhound.battlefree.game.GameInit
+Android GUI:
+
+In order to see the current progress of the Android GUI,
+you have to open the project through Android Studio and
+run it with an emulator (or connected tablet or android phone).
