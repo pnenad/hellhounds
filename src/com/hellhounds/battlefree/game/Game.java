@@ -33,10 +33,11 @@ public class Game implements Runnable{
 
     public Game(Player player1, Player player2, long gameID)
     {
+        this.roundNr = 1;
+        System.out.println(toString());
         this.player1 = player1;
         this.player2 = player2;
         this.gameID = gameID;
-        this.roundNr = 0;
         this.winStatus = 0;
     }
 
@@ -56,7 +57,7 @@ public class Game implements Runnable{
         endstep(player1, player2);
 
     }
-        
+
     private void endstep(Player player1, Player player2)
     {
         boolean player1Loss = player1.getLoss();
@@ -98,6 +99,7 @@ public class Game implements Runnable{
 
             else if(currentHealth <= 0)
             {
+                unit.setCurrentHealth(0);
                 unit.setAlive(false);
             }
         }
@@ -242,9 +244,9 @@ public class Game implements Runnable{
     @Override
     public String toString()
     {
-        String newRound = "Round: " + roundNr + ".\n";
-        String line = "------------------------- RESOURCES --------------------\n";
-        return newRound + line;
+        String resource = "RESOURCES:\n";
+        String line = "------------------------- ROUND" + " " + roundNr + "--------------------\n";
+        return line + resource;
     }
 
 
