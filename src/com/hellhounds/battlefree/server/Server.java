@@ -1,12 +1,9 @@
 package com.hellhounds.battlefree.server;
 //Added basic functionallity for network communication. Simple message exchange between client and server.
-import com.hellhounds.battlefree.game.Game;
 
 import java.io.*;
 import java.net.*;
 import java.util.HashMap;
-import com.hellhounds.battlefree.game.Player;
-import com.hellhounds.battlefree.game.GameDummy;
 
 public class Server{
 
