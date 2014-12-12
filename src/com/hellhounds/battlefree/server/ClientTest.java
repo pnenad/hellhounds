@@ -69,5 +69,4 @@ public ClientTest(){
 			socket.close();
 		}
 
-
 }
