@@ -17,15 +17,15 @@
 package com.hellhounds.battlefree.game.effects;
 
 import com.hellhounds.battlefree.game.units.Unit;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public abstract class Effect{
 
     private int numericalValue = 0;
     private EffectType type;
-    private boolean friendly;
-    private boolean multipleTargets;
-    private Unit[] targets;
-    private int index = 0;
+    private boolean friendly, multipleTargets;
+    private HashMap<String, Unit> targets;
 
     public Effect(EffectType type, int value, boolean friendly, boolean multipleTargets)
     {
@@ -33,25 +33,18 @@ public abstract class Effect{
         this.type = type;
         this.friendly = friendly;
         this.multipleTargets = multipleTargets;
-        this.targets = new Unit[0];
+        targets = new HashMap<>();
     }
 
     public void addTarget(Unit target)
     {
-        Unit[] temp = new Unit[++index];
-
-        for(int i = 0; i < targets.length; i++)
-            temp[i] = targets[i];
-
-        temp[index -1] = target;
-
-        targets = temp;
+        if(!targets.containsKey(target))
+            targets.put(target.getName(), target);
     }
 
     public void removeTargets()
     {
-        targets = new Unit[0];
-        index = 0;
+        targets.clear();
     }
 
     @Override
@@ -61,22 +54,30 @@ public abstract class Effect{
                "\n\t\t\tValue: " + numericalValue;
     }
 
+    // ----------------- ABSTRACT --------------------
+
+    public abstract void applyEffect(Unit source);
+
+    // ----------------- GET & SET --------------------
+
+    /**
+     * Retrive all units target by this effect
+     * @return an array of targeted units
+     */
+    public Unit[] getTargets(){
+        Iterator<String> it = targets.keySet().iterator();
+        Unit[] targetsArray = new Unit[targets.keySet().size()];
+
+        for(int i = 0; it.hasNext(); i++)
+            targetsArray[i] = targets.get(it.next());
+
+        return targetsArray;
+    }
+    
     public int getNumericalValue(){ return numericalValue; }
-
     public EffectType getType(){ return type; }
+    public boolean isFriendly(){ return friendly; }
+    public boolean isMultipleTargets(){ return multipleTargets; }
 
-    public Unit[] getTargets(){ return this.targets; }
-    public void setTargets(Unit[] units){ this.targets = units; }
 
-    public boolean isFriendly() {
-        return friendly;
-    }
-
-    public boolean isMultipleTargets() {
-        return multipleTargets;
-    }
-
-    /* ------------ ABSTRACT --------------------*/
-
-    public abstract void applyEffect(com.hellhounds.battlefree.game.units.Unit source);
 }

@@ -28,9 +28,7 @@ public class PierceEffect extends Effect{
     @Override
     public void applyEffect(Unit source)
     {
-        Unit[] targets = getTargets();
-
-        for(Unit target : targets)
+        for(Unit target : getTargets())
         {
             int damage = getNumericalValue();
             int health = target.getCurrentHealth();

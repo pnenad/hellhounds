@@ -17,6 +17,7 @@
 package com.hellhounds.battlefree.server;
 
 import com.hellhounds.battlefree.messaging.JsonUnit;
+import com.hellhounds.battlefree.messaging.MessageHandler;
 import com.hellhounds.battlefree.messaging.RequestMessage;
 
 import com.google.gson.GsonBuilder;
@@ -41,9 +42,9 @@ public class MessageClientTest {
         DataOutputStream outbound = new DataOutputStream(socket.getOutputStream());
         BufferedReader incoming = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-        JsonUnit[] units = {new JsonUnit(args[1], 100, false, null, null),
-                            new JsonUnit(args[2], 100, false, null, null),
-                            new JsonUnit(args[3], 100, false, null, null)};
+        JsonUnit[] units = {new JsonUnit(MessageHandler.getUnit(args[1])),
+                            new JsonUnit(MessageHandler.getUnit(args[2])),
+                            new JsonUnit(MessageHandler.getUnit(args[3]))};
 
 
         RequestMessage rm = new RequestMessage(args[0], units);

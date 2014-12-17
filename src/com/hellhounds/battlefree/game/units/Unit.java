@@ -18,6 +18,7 @@ package com.hellhounds.battlefree.game.units;
 
 import com.hellhounds.battlefree.game.abilities.Ability;
 import com.hellhounds.battlefree.game.Player;
+import com.hellhounds.battlefree.game.effects.Effect;
 
 public class Unit{
 
@@ -41,12 +42,41 @@ public class Unit{
 
     public void addPrimaryTarget(Unit target)
     {
-        ability.getPrimary().addTarget(target);
+        checkLegalTarget(target, ability.getPrimary());
     }
 
     public void addSecondaryTarget(Unit target)
     {
-        ability.getSecondary().addTarget(target);
+        checkLegalTarget(target, ability.getSecondary());
+    }
+
+    private void checkLegalTarget(Unit target, Effect effect)
+    {
+        if(effect.isFriendly())
+        {
+            if(target.getOwner().equals(owner))
+            {
+                if(!effect.isMultipleTargets())
+                {
+                    if(effect.getTargets().length <= 0)
+                        effect.addTarget(target);
+                }
+                else effect.addTarget(target);
+            }
+
+        }
+        else
+        {
+            if(!target.getOwner().equals(owner))
+            {
+                if(!effect.isMultipleTargets())
+                {
+                    if(effect.getTargets().length <= 0)
+                        effect.addTarget(target);
+                }
+                else effect.addTarget(target);
+            }
+        }
     }
     
     @Override
@@ -60,21 +90,18 @@ public class Unit{
                "\n\t  SecondaryEffect: " + ability.getSecondary().toString() +
                "\n" + ability.getCost().toString();
     }
- 
-    public int getArmor(){ return this.armor; }
-    public void setArmor(int armor){ this.armor = armor; }
 
     public String getName(){ return this.name; }
-    public void setName(String name){ this.name = name; }
 
     public Ability getAbility(){ return this.ability; }
-    public void setAbility(Ability ability){ this.ability = ability; }
+
+    public int getMaxHealth(){ return maxHealth; }
 
     public boolean isAlive(){ return alive; }
     public void setAlive(boolean alive){ this.alive = alive; }
 
-    public int getMaxHealth(){ return maxHealth; }
-    public void setMaxHealth(int maxHealth){ this.maxHealth = maxHealth; }
+    public int getArmor(){ return this.armor; }
+    public void setArmor(int armor){ this.armor = armor; }
 
     public int getCurrentHealth(){ return currentHealth; }
     public void setCurrentHealth(int currentHealth){ this.currentHealth = currentHealth; }

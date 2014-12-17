@@ -16,6 +16,8 @@
  */
 package com.hellhounds.battlefree.messaging;
 
+import com.hellhounds.battlefree.game.units.Unit;
+
 /**
  * Simplified unit class for ease of sending through Json messages
  */
@@ -27,11 +29,20 @@ public class JsonUnit {
     private Target[] primaryTargets;
     private Target[] secondaryTargets;
 
-    public JsonUnit(String unitName, int health, boolean activated, Target[] pTargets, Target[] sTargets)
+    public JsonUnit(Unit unit)
     {
-        this.unitName = unitName;
-        this.health = health;
-        this.activated = activated;
+        this.unitName = unit.getName();
+        this.health = unit.getMaxHealth();
+        this.activated = unit.getAbility().isActivated();
+        this.primaryTargets = null;
+        this.secondaryTargets = null;
+    }
+
+    public JsonUnit(Unit unit, Target[] pTargets, Target[] sTargets)
+    {
+        this.unitName = unit.getName();
+        this.health = unit.getMaxHealth();
+        this.activated = unit.getAbility().isActivated();
         this.primaryTargets = pTargets;
         this.secondaryTargets = sTargets;
     }

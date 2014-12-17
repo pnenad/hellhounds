@@ -29,9 +29,8 @@ public class HealEffect extends Effect{
     public void applyEffect(Unit source)
     {
         int heal = getNumericalValue();
-        Unit[] targets = getTargets();
 
-        for(Unit target : targets)
+        for(Unit target : getTargets())
         {
             target.setCurrentHealth(target.getCurrentHealth() + heal);
             System.out.format("%s's %s healed  %s's %s for %d\n", 

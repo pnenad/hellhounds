@@ -28,16 +28,14 @@ public class DamageEffect extends Effect{
     @Override
     public void applyEffect(Unit source)
     {
-        Unit[] targets = getTargets();
-
-        for(Unit target : targets)
+        for(Unit target : getTargets())
         {
             int rawDamage = getNumericalValue();
             int armor = target.getArmor();
             int health = target.getCurrentHealth();
 
             int calcDamage = rawDamage - armor;
-            health  = health - calcDamage;
+            health -= calcDamage;
 
             if(calcDamage < 0)
             {
@@ -45,8 +43,6 @@ public class DamageEffect extends Effect{
                 calcDamage = 0;
             }
 
-
-            
             target.setCurrentHealth(health);
 
             System.out.format("%s's %s attacked %s's %s for %d%s\n", 

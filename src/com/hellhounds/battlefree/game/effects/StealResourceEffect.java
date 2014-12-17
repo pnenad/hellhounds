@@ -16,38 +16,37 @@
  */
 package com.hellhounds.battlefree.game.effects;
 
+import com.hellhounds.battlefree.game.abilities.ResourceType;
 import com.hellhounds.battlefree.game.units.Unit;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class StealResourceEffect extends Effect{
 
-    private ArrayList<String> resourceList;
-    
+    private ArrayList<ResourceType> resourceList;
+
     public StealResourceEffect(int value, boolean friendly, boolean multiple)
     {
         super(EffectType.STEAL, value, friendly, multiple);
-        resourceList = new ArrayList<String>();
-        resourceList.add("STEEL");
-        resourceList.add("GOLD");
-        resourceList.add("CRYSTAL");
+        resourceList = new ArrayList<>();
+
+        for(ResourceType rt: ResourceType.getResources())
+            resourceList.add(rt);
     }
 
     @Override
     public void applyEffect(Unit source)
     {
         Random rand = new Random();
-        Unit[] targets = getTargets();
         int index = rand.nextInt(resourceList.size());
-        String resource = resourceList.get(index);
+        ResourceType resource = resourceList.get(index);
 
         if(resourceList.size() > 0)
         {
-            for(Unit target : targets)
+            for(Unit target :  getTargets())
             {
-                int stolenResource = target.getOwner().removeResource(resource,
-                                     getNumericalValue());
-                
+                int stolenResource = target.getOwner().removeResource(resource, getNumericalValue());
+
                 if(stolenResource > 0)
                 {
                     source.getOwner().addResource(resource, stolenResource);

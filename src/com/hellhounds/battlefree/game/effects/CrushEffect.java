@@ -28,16 +28,14 @@ public class CrushEffect extends Effect {
     @Override
     public void applyEffect(Unit source)
     {
-        Unit[] targets = getTargets();
-
-        for(Unit target : targets)
+        for(Unit target : getTargets())
         {
             int rawDamage = getNumericalValue();
             int armor = target.getArmor();
             int health = target.getCurrentHealth();
 
             int calcDamage = rawDamage - armor;
-            health  = health - calcDamage;
+            health -= calcDamage;
 
             if(calcDamage >= 0)
             {
@@ -45,9 +43,7 @@ public class CrushEffect extends Effect {
                 target.setCurrentHealth(health - calcDamage);
             }
             else
-            {
                 target.setArmor(-rawDamage);
-            }
 
             target.setCurrentHealth(health);
 

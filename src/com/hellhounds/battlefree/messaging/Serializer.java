@@ -61,7 +61,7 @@ public class Serializer {
         Target[] pTargets = generateJsonTargets(source, primary.getTargets());
         Target[] sTargets = generateJsonTargets(source, secondary.getTargets());
 
-        return new JsonUnit(source.getName(), source.getCurrentHealth(), source.getAbility().isActivated(), pTargets, sTargets);
+        return new JsonUnit(source, pTargets, sTargets);
     }
 
     private Target[] generateJsonTargets(Unit source, Unit[] units)

@@ -53,12 +53,10 @@ public class Ability{
     }
 
     public Effect getPrimary(){ return primary; }
-    public void setPrimary(Effect primary){ this.primary = primary; }
 
     public Effect getSecondary(){ return secondary; }
-    public void setSecondary(Effect secondary){ this.secondary = secondary; }
 
-     public String getName(){ return this.name; }
+    public String getName(){ return this.name; }
     public void setName(String name){ this.name = name; }
 
     public Payment getCost(){ return this.cost; }

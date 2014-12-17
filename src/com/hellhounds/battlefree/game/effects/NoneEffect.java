@@ -28,6 +28,6 @@ public class NoneEffect extends Effect{
     @Override
     public void applyEffect(Unit source)
     {
-        System.out.println("U fkin wot m8");
+        System.out.println("NONE Effect where applied");
     }
 }

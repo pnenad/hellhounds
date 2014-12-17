@@ -29,12 +29,12 @@ public class ArmorEffect extends Effect{
     public void applyEffect(Unit source)
     {
         int addArmor = getNumericalValue();
-        Unit[] targets = getTargets();
 
-        for(Unit target : targets)
+        for(Unit target : getTargets())
         {
             int currentArmor = target.getArmor();
             target.setArmor(currentArmor + addArmor);
+
             System.out.format("%s's %s armored %s's %s for %d\n", 
                               source.getOwner().getUsername(),
                               source.getName(),

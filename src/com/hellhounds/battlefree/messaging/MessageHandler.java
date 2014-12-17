@@ -16,13 +16,10 @@
  */
 package com.hellhounds.battlefree.messaging;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.hellhounds.battlefree.game.Game;
 import com.hellhounds.battlefree.game.Player;
 import com.hellhounds.battlefree.game.units.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -35,7 +32,7 @@ public class MessageHandler{
     {
     }
 
-    public Player handleRequest(RequestMessage message, Player opponent, HashMap<Long, Game> games)
+    public static Player handleRequest(RequestMessage message, Player opponent, HashMap<Long, Game> games)
     {
         Unit[] units = new Unit[message.getUnits().length];
         int index = 0;
@@ -63,7 +60,97 @@ public class MessageHandler{
         else return player;
     }
 
-    private Unit getUnit(String unitName) {
+    /**
+     * Discerns if the sender of the message is player1 or player2
+     * in the Game, then resolves targetting based on message.
+     * @param message
+     */
+    public static void handleTargets(TargetsMessage message, Player player1, Player player2)
+    {
+        if(message.getFromUsername().equalsIgnoreCase(player1.getUsername()))
+        {
+            addTargets(player1, player2, message.getActions());
+        }
+        else
+        {
+            addTargets(player2, player1, message.getActions());
+        }
+    }
+
+    /**
+     * Loops through JsonUnits and tries to fetch a Game Unit
+     * based on its name and player.
+     * If successful and the JsonUnit is marked as activated,
+     * the Game Unit is set as activated as well.
+     * Steps further into mapTargets.
+     * Only locally called from resolveTargetsMessage.
+     * @param player
+     * @param opponent
+     * @param units
+     */
+    private static void addTargets(Player player, Player opponent, JsonUnit[] units)
+    {
+        for(JsonUnit jsonUnit : units)
+        {
+            Unit unit = player.getUnit(jsonUnit.getUnitName());
+
+            if(unit != null && jsonUnit.isActivated())
+            {
+                unit.getAbility().setActivated(true);
+                mapTargets(player, opponent, unit, jsonUnit);
+            }
+        }
+    }
+
+    /**
+     * A fairly inelegant method.
+     * Used for mapping targets from a message to the
+     * actual Units in the active Game.
+     * May need some rework.
+     * @param player
+     * @param opponent
+     * @param unitSource
+     * @param jsonUnitSource
+     */
+    private static void mapTargets(Player player, Player opponent, Unit unitSource, JsonUnit jsonUnitSource)
+    {
+
+        if(jsonUnitSource.getPrimaryTargets().length > 0)
+        {
+            for(Target target : jsonUnitSource.getPrimaryTargets())
+            {
+                String targetUnitName = target.getTargetUnitName();
+                // If the target of the ability and source of the ability is owned by the same player
+                if(target.getTargetUsername().equalsIgnoreCase(player.getUsername()))
+                {
+                    unitSource.addPrimaryTarget(player.getUnit(targetUnitName));
+                }
+                else
+                {
+                    unitSource.addPrimaryTarget(opponent.getUnit(targetUnitName));
+                }
+            }
+        }
+
+        if(jsonUnitSource.getSecondaryTargets().length > 0)
+        {
+            for(Target target : jsonUnitSource.getSecondaryTargets())
+            {
+                String targetUnitName = target.getTargetUnitName();
+                // If the target of the ability and source of the ability is owned by the same player
+                if(target.getTargetUsername().equalsIgnoreCase(player.getUsername()))
+                {
+                    unitSource.addSecondaryTarget(player.getUnit(targetUnitName));
+                }
+                else
+                {
+                    unitSource.addSecondaryTarget(opponent.getUnit(targetUnitName));
+                }
+            }
+        }
+    }
+
+    public static Unit getUnit(String unitName) {
         switch (unitName) {
             case "Archer":
                 return new Archer();

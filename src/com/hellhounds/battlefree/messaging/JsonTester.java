@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hellhounds.battlefree.game.Game;
 import com.hellhounds.battlefree.game.Player;
+import com.hellhounds.battlefree.game.units.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,9 +36,9 @@ public class JsonTester {
 
         HashMap<Long, Game> games = new HashMap<>();
 
-        JsonUnit unit1 = new JsonUnit("Archer", 100, false, null, null);
-        JsonUnit unit2 = new JsonUnit("Defender", 100, false,  null, null);
-        JsonUnit unit3 = new JsonUnit("Barbarian", 100, false,  null, null);
+        JsonUnit unit1 = new JsonUnit(new Archer());
+        JsonUnit unit2 = new JsonUnit(new Defender());
+        JsonUnit unit3 = new JsonUnit(new Barbarian());
 
         JsonUnit[] units = {unit1, unit2, unit3};
 
@@ -64,9 +65,9 @@ public class JsonTester {
                 body = gson.fromJson(json, Message.class);
         }
 
-        JsonUnit punit1 = new JsonUnit("Mushroom", 100, false, null, null);
-        JsonUnit punit2 = new JsonUnit("Vampire", 100, false,  null, null);
-        JsonUnit punit3 = new JsonUnit("Golem", 100, false,  null, null);
+        JsonUnit punit1 = new JsonUnit(new Mushroom());
+        JsonUnit punit2 = new JsonUnit(new Vampire());
+        JsonUnit punit3 = new JsonUnit(new Golem());
 
         JsonUnit[] punits = {punit1, punit2, punit3};
 

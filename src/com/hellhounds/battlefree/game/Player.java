@@ -16,6 +16,7 @@
  */
 package com.hellhounds.battlefree.game;
 
+import com.hellhounds.battlefree.game.abilities.ResourceType;
 import com.hellhounds.battlefree.game.units.Unit;
 
 import java.util.HashMap;
@@ -25,7 +26,7 @@ public class Player{
 
     private String username;
     private boolean loss;
-    private Unit unit1, unit2, unit3;
+    private Unit[] units = new Unit[3];
     private int gold, steel, crystal;
     private HashMap<String, Unit> unitMap;
 
@@ -33,9 +34,9 @@ public class Player{
     {
         this.username = username;
         this.loss = false;
-        this.unit1 = unit1;
-        this.unit2 = unit2;
-        this.unit3 = unit3;
+        units[0] = unit1;
+        units[1] = unit2;
+        units[2] = unit3;
         unitMap = new HashMap<>();
         initUnits();
         generateResource();
@@ -43,8 +44,8 @@ public class Player{
 
     private void initUnits()
     {
-        Unit[] units = getUnits();
-        for(Unit unit : units) {
+        for(Unit unit : getUnits())
+        {
             unit.setOwner(this);
             unitMap.put(unit.getName(), unit);
         }
@@ -52,148 +53,118 @@ public class Player{
 
     public void generateResource()
     {
-        Random rand = new Random();
-        Unit[] units = getUnits();
-
-        for(Unit unit : units)
-        {
+        for(Unit unit : getUnits())
             if(unit.isAlive())
-            {
-                switch(rand.nextInt(3))
-                {
-                    case 0:
-                        this.gold++;
-                        System.out.format("%s got one GOLD resource\n",
-                                          this.username);
-                        break;
-
-                    case 1:
-                        this.steel++;
-                        System.out.format("%s got one STEEL resource\n",
-                                          this.username);
-                        break;
-
-                    case 2:
-                        this.crystal++;
-                        System.out.format("%s got one CRYSTAL resource\n",
-                                          this.username);
-                        break;
-
-                }
-            }
-        }
+                generateResource(1);
     }
 
     public void generateResource(int times)
     {
-        Random rand = new Random();
         for(int i = 0; i < times; i++)
         {
-            switch(rand.nextInt(3))
+            switch(new Random().nextInt(3))
             {
                 case 0:
                     this.gold++;
-                    System.out.format("%s got one GOLD resource\n", 
-                                      this.username);
+                    System.out.format("%s got one GOLD resource\n", this.username);
                     break;
 
                 case 1:
                     this.steel++;
-                    System.out.format("%s got one STEEL resource\n", 
-                                      this.username);
+                    System.out.format("%s got one STEEL resource\n", this.username);
                     break;
 
                 case 2:
                     this.crystal++;
-                    System.out.format("%s got one CRYSTAL resource\n", 
-                                      this.username);
+                    System.out.format("%s got one CRYSTAL resource\n", this.username);
                     break;
             }
         }
     }
 
-    public void addResource(String type, int amount)
+    public void addResource(ResourceType type, int amount)
     {
         switch(type)
         {
-            case "GOLD":
+            case GOLD:
                 this.gold = this.gold + amount;
                 break;
 
-            case "STEEL":
+            case STEEL:
                 this.steel = this.steel + amount;
                 break;
 
-            case "CRYSTAL":
+            case CRYSTAL:
                 this.crystal = this.crystal + amount;
                 break;
-
-            default:
-                System.out.println("Not a valid resource: " + type);
         }
     }
 
-    public int removeResource(String type, int amount)
+    public int removeResource(ResourceType type, int amount)
     {
         switch(type)
         {
-            case "GOLD":
+            case GOLD:
                 if(this.gold > 0 && this.gold >= amount)
                 {
                     this.gold = this.gold - amount;
                     return amount;
                 } break;
 
-            case "STEEL":
+            case STEEL:
                 if(this.steel > 0 && this.steel >= amount)
                 {
                     this.steel = this.steel - amount;
                     return amount;
                 } break;
 
-             case "CRYSTAL":
+             case CRYSTAL:
                 if(this.crystal > 0 && this.crystal >= amount)
                 {
                     this.crystal = this.crystal - amount;
                     return amount;
                 } break;
-
-             default:
-                System.out.println("Not a valid resource: " + type);
-                return 0;
            }
         return 0;
     }
 
-    public Unit[] getUnits()
+    @Override
+    public boolean equals(Object obj)
     {
-        Unit[] units = {unit1, unit2, unit3};
-        return units;
+        Player unknown;
+        if(obj instanceof Player)
+            unknown = (Player) obj;
+        else return false;
+
+        if(unknown.getUsername().equalsIgnoreCase(this.getUsername()))
+            return true;
+        else return false;
     }
 
-    public boolean isLoss() {
-        return loss;
+    @Override
+    public String toString()
+    {
+        return "Username: " + username +
+                "\nPlayer Resource: " +
+                "\n\t\tGold: " + gold +
+                "\n\t\tSteel: " + steel +
+                "\n\t\tCrystal: " + crystal +
+                "\n\nUnit1 --> " + units[0].toString() +
+                "\n\nUnit2 --> " + units[1].toString() +
+                "\n\nUnit3 --> " + units[2].toString();
     }
 
-    public HashMap<String, Unit> getUnitMap() {
-        return unitMap;
-    }
+    public Unit[] getUnits(){ return this.units; }
 
-    public void setUnitMap(HashMap<String, Unit> unitMap) {
-        this.unitMap = unitMap;
+    public Unit getUnit(String unitName)
+    {
+        Unit unit = unitMap.get(unitName);
+        if(unit != null) return unit;
+        else throw new NullPointerException("No such hero " +  unitName);
     }
 
     public String getUsername() { return username; }
     public void setUsername(String username){ this.username = username; }
-
-    public Unit getUnit1() { return unit1; }
-    public void setUnit1(Unit unit1){ this.unit1 = unit1; }
-
-    public Unit getUnit2() { return unit2; }
-    public void setUnit2(Unit unit2){ this.unit2 = unit2; }
-
-    public Unit getUnit3() { return unit3; }
-    public void setUnit3(Unit unit3){ this.unit3 = unit3; }
 
     public int getGold() { return gold; }
     public void setGold(int gold){ this.gold = gold; }
@@ -203,19 +174,6 @@ public class Player{
 
     public int getCrystal() { return crystal; }
     public void setCrystal(int crystal){ this.crystal = crystal; }
-
-    @Override
-    public String toString()
-    {
-        return "Username: " + username +
-               "\nPlayer Resource: " +
-               "\n\t\tGold: " + gold +
-               "\n\t\tSteel: " + steel +
-               "\n\t\tCrystal: " + crystal +
-               "\n\nUnit1 --> " + unit1.toString() +
-               "\n\nUnit2 --> " + unit2.toString() +
-               "\n\nUnit3 --> " + unit3.toString();
-    }
 
     public boolean getLoss(){ return loss; }
     public void setLoss(boolean loss){ this.loss = loss; }
