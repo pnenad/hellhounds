@@ -3,6 +3,7 @@ package com.hellhounds.battlefree.gui;
 import com.hellhounds.battlefree.game.units.*;
 
 import javax.swing.*;
+import javax.swing.border.*;
 import javax.swing.plaf.BorderUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-
 /**
  * Created by Nenad Petkovic on 17.12.14.
  */
@@ -21,11 +21,13 @@ public class GUI extends Thread implements ActionListener{
     private Box chooseBox;
     private JButton play;
     private JPanel gamePanel;
-    private ArrayList<JRadioButton> buttons;
+    private ArrayList<JButton> buttons;
     private JLabel background;
     private int counter;
+    private boolean selected;
 
     public GUI(){
+        selected = false;
         buttons = new ArrayList<>();
         counter = 0;
         makeGUI();
@@ -34,7 +36,7 @@ public class GUI extends Thread implements ActionListener{
     public static void main(String[] args) throws InterruptedException {
         GUI gui = new GUI();
 
-        while(true) {
+        while(!gui.selected) {
             gui.checkSelection();
         }
     }
@@ -55,22 +57,19 @@ public class GUI extends Thread implements ActionListener{
         //create a new JLabel that will be used as a background element
         background = new JLabel(new ImageIcon("Artwork/map.png"));
         background.setLayout(new FlowLayout(FlowLayout.CENTER));
-        background.setOpaque(false);
+        //background.setOpaque(false);
 
         //create a new panel that will be used as a selection menu
+        Border line = BorderFactory.createLineBorder(new Color(85,50,10,255));
+        TitledBorder title = BorderFactory.createTitledBorder(line, "Please select 3 units.");
         choosePanel = new JPanel();
-        choosePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        choosePanel.setBackground(new Color(0,0,0,0));
-        choosePanel.setOpaque(true);
+        choosePanel.setBorder(title);
+        choosePanel.setBackground(new Color(0, 0, 0, 0));
 
-        //create a vertical box so that the elements are sortet over each other
+        //create a vertical box so that the elements are sorted over each other
         chooseBox = new Box(1);
         chooseBox.createVerticalBox();
-        chooseBox.setOpaque(true);
-        chooseBox.setBackground(new Color(0,0,0,0));
-
-        //create a main label (a title)
-        chooseBox.add(new JLabel("Please select 3 units!"));
+        chooseBox.setBackground(new Color(0, 0, 0, 0));
 
         //call the create buttons method
         //this method creates all the buttons from the available unit classes, populates description and
@@ -81,7 +80,7 @@ public class GUI extends Thread implements ActionListener{
         play = new JButton();
         play.setIcon(new ImageIcon("Artwork/play.png"));
         play.setPressedIcon(new ImageIcon("Artwork/play_pressed.png"));
-        play.setPreferredSize(new Dimension(190, 49));
+        play.setPreferredSize(new Dimension(190, 45));
         play.setBorder(new BorderUIResource.EmptyBorderUIResource(0,0,0,0));
         play.setBackground(new Color(0, 0, 0, 0));
         play.setActionCommand("play");
@@ -113,21 +112,24 @@ public class GUI extends Thread implements ActionListener{
                 System.out.println("You have to select 3 units");
             }
             else{
+                selected = true;
+
                 gamePanel = new JPanel();
                 gamePanel.setLayout(new FlowLayout());
                 gamePanel.setBackground(new Color(0,0,0,0));
 
                 JLabel l = new JLabel("This is the game window.");
-                l.setBackground(new Color(0,0,0,0));
+                l.setBackground(new Color(0, 0, 0, 0));
                 gamePanel.add(l);
 
                 JLabel back = new JLabel(new ImageIcon("Artwork/map.png"));
                 back.setLayout(new FlowLayout(FlowLayout.CENTER));
-                back.setOpaque(false);
 
                 back.add(gamePanel);
 
                 mainFrame.remove(background);
+                //remove background panel with all subelements from cache
+                background = null;
                 mainFrame.add(back);
                 mainFrame.pack();
                 mainFrame.setVisible(true);
@@ -135,19 +137,27 @@ public class GUI extends Thread implements ActionListener{
         }
     }
 
-    private ArrayList<JRadioButton> getSelection(){
+    //GUI.class.getResource(source)
+    private ArrayList<JButton> getSelection(){
         return buttons;
     }
 
     private void createButtons() {
         for(final Unit u : getAllUnits()){
-            final JRadioButton button = new JRadioButton(u.getName());
+            final JButton button = new JButton();
+            button.setHorizontalTextPosition(JButton.CENTER);
+            button.setVerticalTextPosition(JButton.CENTER);
+            button.setBorder(BorderFactory.createEmptyBorder());
+            button.setContentAreaFilled(false);
+            button.setIcon(new ImageIcon("Artwork/button.png"));
+            button.setPressedIcon(new ImageIcon("Artwork/button_pressed.png"));
+            button.setDisabledIcon(new ImageIcon("Artwork/button_disabled.png"));
             button.setText(u.getName());
             String source = "../../../../"+u.getName()+".png";
-            button.setToolTipText("<html><img src=\"" + GUI.class.getResource(source) + "\" />" +
+            button.setToolTipText("<html><div style='background:#96734b;'<img src=\"" + GUI.class.getResource(source) + "\" />" +
                     "<br/>" +
-                    "<p>This is the " +
-                    u.getName() + "<br/>Ability: " +
+                    "<p><b>This is the " +
+                    u.getName() + "</b><br/>Ability: " +
                     u.getAbility().getName() +
                     "<br/>Primary effect: " +
                     u.getAbility().getPrimary().getType() +
@@ -161,35 +171,40 @@ public class GUI extends Thread implements ActionListener{
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent event) {
-                    if (button.isSelected()) {
+                    if (!button.isSelected()) {
+                        button.setSelected(true);
+                        button.setIcon(new ImageIcon("Artwork/button_pressed.png"));
                         counter++;
                     } else {
+                        button.setSelected(false);
+                        button.setIcon(new ImageIcon("Artwork/button.png"));
                         counter--;
                     }
                 }
             });
-            button.setBackground(new Color(0, 0, 0, 0));
+            button.setSize(130, 29);
             buttons.add(button);
             chooseBox.add(button);
         }
     }
 
     private void checkSelection() throws InterruptedException {
-        System.out.println("Selected units: " + counter);
-        Thread.sleep(300);
         if (counter == 3) {
-            for (final JRadioButton b : getSelection()) {
+            for (final JButton b : getSelection()) {
                 if (!b.isSelected()) {
                     b.setEnabled(false);
                 }
             }
         }
         else if(counter < 3 && counter > 0){
-            for (final JRadioButton b : getSelection()) {
+            for (final JButton b : getSelection()) {
                 if (!b.isEnabled()) {
                     b.setEnabled(true);
                 }
             }
+        }
+        else{
+            Thread.sleep(200);
         }
     }
 
